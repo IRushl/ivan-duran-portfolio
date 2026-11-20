@@ -1,4 +1,5 @@
 'use client';
+import { Localized } from '@/i18n/localized';
 
 import { useEffect, useId, useRef, useState, useSyncExternalStore, type KeyboardEvent } from 'react';
 import { tripflowArtworks, tripflowDecisions } from '@/data/tripflow';
@@ -44,7 +45,7 @@ export function TripflowExplorer() {
     tabs.current[next]?.focus();
   }
 
-  return <div className={styles.explorer}>
+  return <Localized>{<div className={styles.explorer}>
     <div className={styles.steps} role="tablist" aria-orientation={vertical ? 'vertical' : 'horizontal'} aria-label="Recorrido de TripFlow y decisiones de diseño">
       {tripflowDecisions.map((decision, index) => <button key={decision.label} type="button" role="tab" id={`${id}-tab-${index}`} aria-controls={`${id}-panel`} aria-selected={selected === index} tabIndex={selected === index ? 0 : -1} ref={element => { tabs.current[index] = element; }} onClick={() => setSelected(index)} onKeyDown={event => keyboard(event, index)}>
         <span className="eyebrow">{decision.label}</span><strong>{decision.task}</strong><span>{decision.summary}</span>
@@ -70,5 +71,5 @@ export function TripflowExplorer() {
       </div>
     </div>
     <p className={styles.note}>Exploración visual de las pantallas originales. Los botones y campos dentro de las capturas no son controles de una aplicación funcional.</p>
-  </div>;
+  </div>}</Localized>;
 }

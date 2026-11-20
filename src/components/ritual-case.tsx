@@ -1,3 +1,4 @@
+import { Localized } from '@/i18n/server-localized';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowDown, ArrowRight } from 'lucide-react';
@@ -19,7 +20,7 @@ const applications = [
 const palette = [ ['Marfil cálido','#F5EEE7'],['Beige','#E4D3C5'],['Topo','#B8A394'],['Rosa empolvado','#D8B6AF'],['Dorado','#D4AF67'],['Marrón','#8D6952'] ];
 
 export function RitualCase() {
-  return <main id="contenido" tabIndex={-1} className={`shell ${styles.case}`} data-cursor-parallax="ritual"><CursorParallax rootSelector={'[data-cursor-parallax="ritual"]'}/><CaseReveal>
+  return <Localized>{<main id="contenido" tabIndex={-1} className={`shell ${styles.case}`} data-cursor-parallax="ritual"><CursorParallax rootSelector={'[data-cursor-parallax="ritual"]'}/><CaseReveal>
     <header className={styles.hero}>
       <nav aria-label="Ruta de navegación"><ol className="case-breadcrumb"><li><Link href="/#proyectos" className="back-link">Volver a proyectos</Link></li><li aria-current="page"><span aria-hidden="true">/</span> Ritual Amarte</li></ol></nav>
       <p className={styles.kicker} data-motion-hero="0">Ritual Amarte / Liderazgo de diseño · 2026</p>
@@ -45,5 +46,5 @@ export function RitualCase() {
 
     <section id="aprendizajes" className={styles.section} aria-labelledby="ritual-aprendizajes"><p className={styles.kicker}>06 / Aprendizajes y próximos pasos</p><h2 id="ritual-aprendizajes" data-motion="heading">De una idea a una experiencia<br/><span>que se puede explorar.</span></h2><div className={styles.learnings}><div><h3>Conectar disciplinas</h3><p>Transformé la visión emprendedora de Aura en una identidad visual coherente y una representación conceptual del espacio. Conectar branding, experiencia de servicio y tecnología exigió mantener un criterio común desde el logotipo hasta el showroom.</p></div><div><h3>Prototipar para conversar</h3><p>El prototipado asistido por IA aceleró la materialización digital bajo mi dirección. Comprender una necesidad, tomar decisiones y coordinar los recursos para ejecutarlas fue tan importante como el entregable: permitió comunicar y explorar la propuesta antes de una inversión física.</p></div><div><h3>Validar antes de invertir</h3><p>El siguiente paso es contrastar el escenario con un espacio real y evaluar el recorrido del servicio. No hay resultados comerciales ni usabilidad del showroom comprobados.</p></div></div><p className={styles.closingNote}>Aura Cristina Pineda creó la idea, fundó el emprendimiento y es la autora académica. Yo lideré el diseño integral y dirigí su materialización digital. Ritual Amarte permanece en fase preoperativa: el showroom es un prototipo conceptual, no un establecimiento construido ni validado comercialmente.</p></section>
     <Link className="case-next" href="/#proyectos"><div><span className={styles.kicker}>Seguir explorando</span><strong>Volver a proyectos</strong></div><ArrowRight size={26} aria-hidden="true"/></Link>
-  </CaseReveal></main>;
+  </CaseReveal></main>}</Localized>;
 }

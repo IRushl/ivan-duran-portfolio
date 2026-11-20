@@ -1,4 +1,5 @@
 'use client';
+import { Localized } from '@/i18n/localized';
 
 import { useCallback, useEffect, useId, useLayoutEffect, useRef, useState, useSyncExternalStore, type CSSProperties, type ReactNode } from 'react';
 import { cancelCaseMotion, playCaseMotion } from './case-motion';
@@ -56,7 +57,7 @@ export function RedebanStory({ steps, label, compact = false }: { steps: StorySt
     playCaseMotion(root.current?.querySelector(`[data-story-step="${active}"] [data-story-visual]`) ?? null, 'image');
   }, [active]);
 
-  return (
+  return <Localized>{(
     <div ref={root}>
       {compact && <nav className={styles.journeyNav} aria-label="Etapas del recorrido Android a Web">
         <ol>{steps.map((step, index) => (
@@ -103,7 +104,7 @@ export function RedebanStory({ steps, label, compact = false }: { steps: StorySt
       ))}
       </ol>
     </div>
-  );
+  )}</Localized>;
 }
 
 const subscribe = () => () => {};
@@ -123,7 +124,7 @@ export function RedebanStates({ states }: { states: TransactionState[] }) {
     if (ready) playCaseMotion(panels.current?.querySelector('[data-selected="true"]') ?? null, 'panel');
   }, [ready, selected]);
 
-  return (
+  return <Localized>{(
     <div className={styles.states}>
       {ready && <div className={styles.stateControls} role="tablist" aria-label="Explorar un estado transaccional">
         {states.map((state, index) => (
@@ -158,5 +159,5 @@ export function RedebanStates({ states }: { states: TransactionState[] }) {
       ))}
       </div>
     </div>
-  );
+  )}</Localized>;
 }

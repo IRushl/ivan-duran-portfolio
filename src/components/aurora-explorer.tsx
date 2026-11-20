@@ -1,4 +1,5 @@
 'use client';
+import { Localized } from '@/i18n/localized';
 
 import { useEffect, useId, useRef, useState, type KeyboardEvent } from 'react';
 import type { AuroraMoment } from '@/data/aurora';
@@ -47,7 +48,7 @@ export function AuroraExplorer({ label, moments, showcase, mobileImages, reverse
   };
   const image = mobile && mobileImages ? mobileImages[Math.max(0, selected)] : active.image;
   const phone = image.width === 780;
-  return <div className={`${styles.explorer} ${mobileImages ? styles.plansExplorer : ''} ${reverse ? styles.reverse : ''}`}>
+  return <Localized>{<div className={`${styles.explorer} ${mobileImages ? styles.plansExplorer : ''} ${reverse ? styles.reverse : ''}`}>
     <div className={styles.tabs} role="tablist" aria-label={label}>
       {options.map(({ label: optionLabel, index }, position) => <button key={optionLabel} ref={el => { tabs.current[position] = el; }} type="button" role="tab" id={`${id}-tab-${index}`} aria-controls={`${id}-panel`} aria-selected={selected === index} tabIndex={selected === index ? 0 : -1} onClick={() => select(index)} onKeyDown={event => keyboard(event, index)}>{optionLabel}</button>)}
     </div>
@@ -64,5 +65,5 @@ export function AuroraExplorer({ label, moments, showcase, mobileImages, reverse
       </div>
       <div ref={visual} className={styles.momentVisual} data-motion="image">{presenting ? <AuroraMockup image={showcase} title={`${label} · Visualización conceptual`} /> : <AuroraVisual image={image} title={`${label} · ${active.label}`} phone={phone} />}</div>
     </div>
-  </div>;
+  </div>}</Localized>;
 }

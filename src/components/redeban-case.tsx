@@ -1,3 +1,4 @@
+import { Localized } from '@/i18n/server-localized';
 import type { ReactNode } from 'react';
 import Link from 'next/link';
 import { EvidenceLabel } from './evidence-label';
@@ -107,7 +108,7 @@ const journey = [
 
 function Act({ index, children }: { index: 0 | 1 | 2 | 3 | 4; children: ReactNode }) {
   const [id, label, title] = acts[index];
-  return (
+  return <Localized>{(
     <section id={id} tabIndex={-1} aria-labelledby={`${id}-titulo`} className={styles.act}>
       <header className={styles.actHeading} data-motion="heading">
         <p className="eyebrow"><span>0{index + 1}</span> / {label}</p>
@@ -115,11 +116,11 @@ function Act({ index, children }: { index: 0 | 1 | 2 | 3 | 4; children: ReactNod
       </header>
       {children}
     </section>
-  );
+  )}</Localized>;
 }
 
 export function RedebanCase({ project, nextProject }: { project: Project; nextProject: Project }) {
-  return (
+  return <Localized>{(
     <main id="contenido" data-cursor-parallax="redeban" tabIndex={-1} className={`shell ${styles.page}`}>
       <CursorParallax rootSelector={'[data-cursor-parallax="redeban"]'} /><CaseReveal>
         <header className={styles.hero}>
@@ -338,6 +339,6 @@ export function RedebanCase({ project, nextProject }: { project: Project; nextPr
         <ArrowRight size={26} aria-hidden="true" />
       </Link>
     </main>
-  );
+  )}</Localized>;
 }
 

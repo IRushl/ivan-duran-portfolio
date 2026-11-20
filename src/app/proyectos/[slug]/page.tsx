@@ -10,6 +10,7 @@ import { RitualCase } from '@/components/ritual-case';
 import { profile } from '@/data/profile';
 import { projects } from '@/data/projects';
 import { siteOrigin, socialImage } from '@/data/site';
+import { getLocale, localizedMetadata } from '@/i18n/server';
 
 type CasePageProps = { params: Promise<{ slug: string }> };
 
@@ -26,12 +27,12 @@ export async function generateMetadata({ params }: CasePageProps): Promise<Metad
 
   const title = `${project.name} — ${project.title}`;
   const path = `/proyectos/${slug}`;
-  return {
+  return localizedMetadata({
     title,
     description: project.description,
     openGraph: { title, description: project.description, type: 'website', locale: 'es', siteName: `${profile.name} · ${profile.role}`, ...(siteOrigin && { url: path, images: [socialImage] }) },
     ...(siteOrigin && { alternates: { canonical: path } }),
-  };
+  },await getLocale());
 }
 
 export default async function CasePage({ params }: CasePageProps) {

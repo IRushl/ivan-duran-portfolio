@@ -1,3 +1,4 @@
+import { Localized } from '@/i18n/server-localized';
 import Link from 'next/link';
 import { EvidenceLabel } from './evidence-label';
 import { ArrowDown, ArrowRight, ArrowUpRight } from 'lucide-react';
@@ -10,7 +11,7 @@ import { TripflowExplorer } from './tripflow-explorer';
 import styles from './tripflow-case.module.css';
 
 export function TripflowCase({ nextProject }: { nextProject: Project }) {
-  return <main id="contenido" data-cursor-parallax="tripflow" tabIndex={-1} className={`shell ${styles.case}`}><CursorParallax rootSelector={'[data-cursor-parallax="tripflow"]'} /><CaseReveal>
+  return <Localized>{<main id="contenido" data-cursor-parallax="tripflow" tabIndex={-1} className={`shell ${styles.case}`}><CursorParallax rootSelector={'[data-cursor-parallax="tripflow"]'} /><CaseReveal>
     <header className={styles.hero}>
       <nav aria-label="Ruta de navegación"><ol className="case-breadcrumb"><li><Link className="back-link" href="/#proyectos">Volver a proyectos</Link></li><li aria-current="page"><span aria-hidden="true">/</span> TripFlowApp</li></ol></nav>
       <div className={styles.heroGrid}>
@@ -47,5 +48,5 @@ export function TripflowCase({ nextProject }: { nextProject: Project }) {
       <div className={styles.resources}><h3>Recursos y alcance</h3><p>Explora el diseño y el prototipo del recorrido.</p><div className="hero-actions"><a className="button button-primary" href="https://filled-row-01691768.figma.site" target="_blank" rel="noopener noreferrer" aria-label="Abrir prototipo (abre en una pestaña nueva)">Abrir prototipo <ArrowUpRight size={16} aria-hidden="true" /></a><a className="button button-quiet" href="https://www.figma.com/design/kk0av7CRVeOllZLiPXsf30/Tripflow-App?node-id=0-1&t=7yIgYepOvc7Fglhi-1" target="_blank" rel="noopener noreferrer" aria-label="Ver diseño en Figma (abre en una pestaña nueva)">Ver diseño en Figma <ArrowUpRight size={16} aria-hidden="true" /></a></div></div>
     </section>
     <Link className="case-next" href={`/proyectos/${nextProject.slug}`}><div><span className="eyebrow">Siguiente proyecto</span><strong>{nextProject.name}</strong></div><ArrowRight size={26} aria-hidden="true" /></Link>
-  </CaseReveal></main>;
+  </CaseReveal></main>}</Localized>;
 }

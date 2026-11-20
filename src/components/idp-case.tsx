@@ -1,3 +1,4 @@
+import { Localized } from '@/i18n/server-localized';
 import Link from 'next/link';
 import { EvidenceLabel } from './evidence-label';
 import { ArrowDown, ArrowRight } from 'lucide-react';
@@ -9,7 +10,7 @@ import { IdpPipeline, IdpFunnel } from './idp-interactions';
 import styles from './idp-case.module.css';
 
 export function IdpCase() {
-  return <main id="contenido" data-cursor-parallax="idp" tabIndex={-1} className={`shell ${styles.case}`}><CursorParallax rootSelector={'[data-cursor-parallax="idp"]'} /><CaseReveal>
+  return <Localized>{<main id="contenido" data-cursor-parallax="idp" tabIndex={-1} className={`shell ${styles.case}`}><CursorParallax rootSelector={'[data-cursor-parallax="idp"]'} /><CaseReveal>
     <header className={styles.hero}>
       <nav aria-label="Ruta de navegación"><ol className="case-breadcrumb"><li><Link className="back-link" href="/#proyectos">Volver a proyectos</Link></li><li aria-current="page"><span aria-hidden="true">/</span> Interfaz de Producto</li></ol></nav>
       <div className={styles.heroGrid}><div><p className="eyebrow" data-motion-hero="0">Interfaz de Producto / Content Strategy · AI · Growth</p><h1 data-motion-hero="1">De lo largo a lo corto:<br /><span>el poder de escalar contenido.</span></h1><p className={styles.lead} data-motion-hero="2">Cómo diseñé un sistema de reutilización de contenido con inteligencia artificial para conectar producción, distribución y oportunidades de crecimiento.</p><a className="button button-primary" href="#sistema" data-motion-hero="3">Explorar el sistema <ArrowDown size={16} aria-hidden="true" /></a></div><div data-motion-hero="3" data-motion-kind="image"><IdpVisual parallax image={idpImages.hero} title="IDP · Un ecosistema conectado" caption="Visualización conceptual generada con IA; no es una captura de analítica." priority /></div></div>
@@ -41,5 +42,5 @@ export function IdpCase() {
     <section className={styles.closing} aria-labelledby="idp-cierre"><div data-motion="image"><IdpVisual parallax image={idpImages.closing} title="IDP · Producción, distribución y medición" caption="Visualización conceptual generada con IA del ecosistema IDP." sizes="(max-width: 1050px) 90vw, 1040px" /></div><p className="eyebrow">Reflexión final</p><h2 id="idp-cierre" data-motion="heading">No diseñé solamente piezas de contenido.<br /><span>Diseñé un sistema para multiplicar sus oportunidades.</span></h2><p className={styles.closingText}>La escalabilidad depende de una estructura que pueda repetirse sin perder coherencia. Mi aporte fue conectar las transformaciones y su propósito; comprobar su contribución al crecimiento exige una medición que siga el recorrido completo.</p></section>
 
     <Link className="case-next" href="/#proyectos"><div><span className="eyebrow">Seguir explorando</span><strong>Volver a proyectos</strong></div><ArrowRight size={26} aria-hidden="true" /></Link>
-  </CaseReveal></main>;
+  </CaseReveal></main>}</Localized>;
 }

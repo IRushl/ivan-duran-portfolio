@@ -54,8 +54,6 @@
 .dots button > span { width:7px; height:7px; border-radius:50%; background:#7f8d75; }
 .dots button[aria-pressed=true] > span { background:var(--project-accent); width:10px; height:10px; box-shadow:0 0 12px color-mix(in srgb,var(--project-accent) 45%,transparent); }
 .dots button:hover > span { background:var(--project-accent); }
-.pauseCarousel { display:grid; place-items:center; width:44px; height:44px; border:1px solid #5c6b50; border-radius:50%; color:#d7e5ce; cursor:pointer; flex-shrink:0; }
-.pauseCarousel:disabled { opacity:.5; cursor:default; }
 @media(max-width:400px) { .carouselControls { gap:.2rem; } .dots button { width:36px; } }
 @media(prefers-reduced-motion:no-preference) {
  .slide { transition:opacity 750ms ease; }

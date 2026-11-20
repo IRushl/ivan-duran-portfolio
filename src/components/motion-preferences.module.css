@@ -1,0 +1,8 @@
+.preferences { position:relative; }
+.preferences summary { display:grid; place-items:center; width:38px; height:38px; cursor:pointer; border:1px solid var(--control-border); border-radius:50%; color:var(--subtle); list-style:none; }
+.preferences summary::-webkit-details-marker { display:none; }
+.preferences[open] summary { border-color:var(--color-accent); color:var(--color-accent); }
+.panel { position:absolute; right:0; top:calc(100% + .7rem); width:min(19rem,calc(100vw - 2.5rem)); padding:1rem; background:#101b22f5; backdrop-filter:blur(18px); border:1px solid var(--home-border); border-radius:.6rem; box-shadow:0 1rem 2rem #0007; z-index:30; }
+.panel label { display:flex; gap:.8rem; align-items:center; min-height:44px; cursor:pointer; font-size:.8rem; line-height:1.6; }
+.panel input { width:18px; height:18px; accent-color:var(--color-accent); flex-shrink:0; }
+.panel p { color:var(--muted); font-size:.75rem; line-height:1.6; margin-top:.6rem; }

@@ -1,0 +1,5 @@
+.languages { display:flex; align-items:center; gap:.15rem; border:1px solid var(--control-border); border-radius:99px; padding:.1rem .25rem; color:var(--subtle); }
+.languages button { min-width:36px; min-height:36px; border-radius:99px; font-size:.72rem; font-weight:550; cursor:pointer; }
+.languages button[aria-pressed=true] { color:var(--color-accent); background:color-mix(in srgb,var(--color-accent) 10%,transparent); }
+.languages span { font-size:.7rem; color:var(--control-border); }
+@media(max-width:380px) { .languages button {min-width:30px;} }

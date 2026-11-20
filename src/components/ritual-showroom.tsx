@@ -1,4 +1,5 @@
 'use client';
+import { Localized } from '@/i18n/localized';
 
 import { useId, useState } from 'react';
 import { ArrowUpRight, Box, X } from 'lucide-react';
@@ -16,11 +17,11 @@ const views = [
 export function RitualShowroom() {
   const [live,setLive]=useState(false);
   const id=useId();
-  return <div className={styles.showroom}>
+  return <Localized>{<div className={styles.showroom}>
     <div className={styles.showroomBar}><div><span className={styles.kicker}>Escenario ideal / 96 m² hipotéticos</span><h3>Explorar antes de construir.</h3></div><button type="button" className={styles.primary} aria-controls={`${id}-viewer`} aria-expanded={live} onClick={()=>setLive(!live)}>{live?<X size={18} aria-hidden="true"/>:<Box size={18} aria-hidden="true"/>}{live?'Volver a las capturas':'Activar showroom 3D'}</button></div>
     <div id={`${id}-viewer`}>
       {live ? <div className={styles.liveViewer}><p className={styles.viewerNote}>Demo interactiva externa. Usa sus controles para cambiar de vista. Puedes volver a las capturas con el botón superior.</p><iframe src={ritualDemo} title="Showroom 3D conceptual de Ritual Amarte" loading="eager" sandbox="allow-scripts allow-same-origin" allow="fullscreen" referrerPolicy="no-referrer" /></div> : <RitualGallery items={views} label="Vistas documentadas del showroom" initial={2} />}
     </div>
     <div className={styles.demoFooter}><p>Las capturas conservan la versión documentada. La demo puede incorporar iteraciones posteriores.</p><a href={ritualDemo} target="_blank" rel="noopener noreferrer">Abrir demo en otra pestaña <ArrowUpRight size={16} aria-hidden="true"/><span className="sr-only"> (abre en una pestaña nueva)</span></a></div>
-  </div>;
+  </div>}</Localized>;
 }

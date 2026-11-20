@@ -1,3 +1,4 @@
+import { Localized } from '@/i18n/server-localized';
 import Link from 'next/link';
 import { EvidenceLabel } from './evidence-label';
 import { ArrowDown, ArrowRight } from 'lucide-react';
@@ -10,7 +11,7 @@ import { ParagonDecisionVisual } from './paragon-decision-visual';
 import styles from './paragon-case.module.css';
 
 export function ParagonCase({ nextProject }: { nextProject: Project }) {
-  return <main id="contenido" data-cursor-parallax="paragon" tabIndex={-1} className={`shell ${styles.case}`}><CursorParallax rootSelector={'[data-cursor-parallax="paragon"]'} /><CaseReveal>
+  return <Localized>{<main id="contenido" data-cursor-parallax="paragon" tabIndex={-1} className={`shell ${styles.case}`}><CursorParallax rootSelector={'[data-cursor-parallax="paragon"]'} /><CaseReveal>
     <header className={styles.hero}>
       <nav aria-label="Ruta de navegación"><ol className="case-breadcrumb"><li><Link className="back-link" href="/#proyectos">Volver a proyectos</Link></li><li aria-current="page"><span aria-hidden="true">/</span> Paragón</li></ol></nav>
       <div className={styles.heroGrid}>
@@ -45,5 +46,5 @@ export function ParagonCase({ nextProject }: { nextProject: Project }) {
     <section className={`${styles.section} ${styles.reflection}`} aria-labelledby="paragon-reflexion"><p className="eyebrow">Reflexión / Aprendizajes y límites</p><h2 id="paragon-reflexion" data-motion="heading">La nostalgia abre la puerta.<br /><span>El vínculo se diseña después.</span></h2><div className={styles.learnings}><div><h3>Investigar con una pregunta</h3><p>Corregir el benchmark me ayudó a buscar patrones que respondieran al reto de participación, no solo referencias visuales atractivas.</p></div><div><h3>Equilibrar motivación y claridad</h3><p>Una invitación, un ranking o un boletín necesitan explicar su propósito. Hacer visible una acción no garantiza que las personas quieran realizarla.</p></div><div><h3>Separar propuesta e impacto</h3><p>El siguiente paso es contrastar descubrimiento, comprensión de las reglas y participación con tareas observables; después, medir retorno y actividad con eventos definidos.</p></div></div><div className={styles.scope}><h3>Qué queda por comprobar</h3><p>La evaluación debería separar encontrar Comunidad, entender sus reglas y participar. Definir éxito por tarea permitiría priorizar la siguiente iteración.</p><p>Mi alcance fue Comunidad. El blog y su arquitectura general pertenecen al trabajo del equipo.</p></div></section>
 
     <Link className="case-next" href={`/proyectos/${nextProject.slug}`}><div><span className="eyebrow">Siguiente proyecto</span><strong>{nextProject.name}</strong></div><ArrowRight size={26} aria-hidden="true" /></Link>
-  </CaseReveal></main>;
+  </CaseReveal></main>}</Localized>;
 }

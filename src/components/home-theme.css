@@ -1,0 +1,3 @@
+/* Home tokens are supplied by home-palette.ts. Case-study identities are not overridden. */
+body:has([data-home-immersive]) { --color-accent:var(--home-accent); --control-border:var(--home-border); }
+body:has([data-home-immersive]) .site-header { border-bottom-color:var(--home-border); }

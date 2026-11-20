@@ -1,3 +1,4 @@
+import { Localized } from '@/i18n/server-localized';
 import { HomeContact } from './home-contact';
 import { HomeProjects } from './home-projects';
 import { HomeNavigation } from './home-navigation';
@@ -16,5 +17,5 @@ export function HomeView() {
     <div className={styles.heroActions}><a className={styles.primary} href="#proyectos">Explorar proyectos</a><a className={styles.secondary} href={homeContact.cv.href} download="Ivan-Duran-CV-2026.pdf">Descargar CV <span>PDF</span></a></div>
     <div className={styles.heroBottom}><p>Diseño centrado en personas.<br/><span>Experiencias impulsadas por tecnología.</span></p><p>Investigación · Diseño de interfaces · Prototipado</p></div>
   </div></section>;
-  return <main id="contenido" tabIndex={-1} className={styles.home}><HomeNavigation/><ImmersiveHome hero={hero}><HomeProjects/><HomePerspective/><HomeTimeline/><CapabilityCards/><HomePersonal/><HomeContact/></ImmersiveHome></main>;
+  return <Localized>{<main id="contenido" tabIndex={-1} className={styles.home}><HomeNavigation/><ImmersiveHome hero={hero}><HomeProjects/><HomePerspective/><HomeTimeline/><CapabilityCards/><HomePersonal/><HomeContact/></ImmersiveHome></main>}</Localized>;
 }

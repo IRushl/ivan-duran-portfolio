@@ -1,6 +1,8 @@
 'use client';
+import { Localized } from '@/i18n/localized';
 
-import { useCallback, useRef, useState, type ReactNode } from 'react';
+import { useCallback, useEffect, useRef, type ReactNode } from 'react';
+import { motionPreferenceEvent, readMotionPreference } from '@/lib/motion-preference';
 import { SpatialSurface, useSpatialScene } from '../spatial-scene/surface';
 import { clamp } from '../spatial-scene/trajectory';
 import { immersiveMotion } from './config';
@@ -13,7 +15,11 @@ export function ImmersiveHome({ hero, children }: { hero: ReactNode; children: R
   const surface = useRef<HTMLDivElement>(null);
   const settings = useRef({ ...immersiveMotion });
   const pausedRef = useRef(false);
-  const [paused, setPaused] = useState(false);
+  useEffect(()=>{
+    const sync=()=>{pausedRef.current=readMotionPreference();surface.current?.dispatchEvent(new Event('labsettings'))};
+    sync();document.addEventListener(motionPreferenceEvent,sync);
+    return()=>document.removeEventListener(motionPreferenceEvent,sync);
+  },[]);
   const getProgress = useCallback(() => {
     const root = journey.current;
     if (!root) return 0;
@@ -31,13 +37,12 @@ export function ImmersiveHome({ hero, children }: { hero: ReactNode; children: R
     return root.querySelector('[data-orb-stage]')?.getBoundingClientRect() ?? null;
   }, []);
   useSpatialScene({ surface, journey, settings, paused: pausedRef, onStatus: ignoreSceneStatus, getProgress, getOrbFrame, profile: 'immersive' });
-  return <div ref={journey} className={styles.root} data-home-immersive>
-    <div className={styles.stage} aria-hidden="true"><SpatialSurface surface={surface}/><div className={styles.scrim}/></div>
+  return <Localized>{<div ref={journey} className={styles.root} data-home-immersive>
+    <div className={styles.stage} aria-hidden="true"><SpatialSurface surface={surface} cyan/><div className={styles.scrim}/></div>
     <div className={styles.hero}>
       {hero}
       <div className={styles.orbSpace} data-orb-stage aria-hidden="true"/>
-      <button className={styles.pause} type="button" aria-pressed={paused} onClick={() => { pausedRef.current = !paused; setPaused(!paused); surface.current?.dispatchEvent(new Event('labsettings')); }}>{paused ? 'Reanudar movimiento' : 'Pausar movimiento'}</button>
     </div>
     {children}
-  </div>;
+  </div>}</Localized>;
 }

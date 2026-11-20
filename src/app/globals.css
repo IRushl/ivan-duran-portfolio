@@ -39,6 +39,10 @@ section[tabindex]:focus-visible { outline-offset: -2px; }
 .header-nav a, .footer-inner nav a { min-height: 2.75rem; display: inline-flex; align-items: center; transition: color 160ms ease; }
 .header-nav a:is(:hover, :active), .footer-inner nav a:is(:hover, :active) { color: var(--color-accent); text-decoration: underline; text-underline-offset: .2em; }
 .header-contact { padding-inline: .85rem; border: 1px solid var(--control-border); color: var(--color-foreground); }
+.header-inner { display:grid; grid-template-columns:auto 1fr auto; }
+.header-nav { justify-self:end; }
+.header-tools { display:flex; align-items:center; gap:.55rem; }
+@media(max-width:650px) { .header-inner { grid-template-columns:1fr auto; gap:.3rem 1rem; padding-block:.65rem; } .header-nav { grid-row:2; grid-column:1/-1; justify-self:stretch; justify-content:space-between; gap:.7rem; } .header-tools { grid-row:1; grid-column:2; } }
 
 .hero { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); align-items: end; gap: clamp(1.4rem, 4vw, 3.6rem); padding-block: var(--section-space); }
 .hero-role { color: var(--color-foreground); margin-bottom: 1.2rem; }

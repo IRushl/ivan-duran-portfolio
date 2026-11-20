@@ -1,4 +1,5 @@
 'use client';
+import { Localized } from '@/i18n/localized';
 
 import { useId, useRef, useState } from 'react';
 import Image from 'next/image';
@@ -14,7 +15,7 @@ export function ImageLightbox({ image, title }: { image: StudyImage; title: stri
   const [opened, setOpened] = useState(false);
   const original = image.original ?? image.src;
 
-  return (
+  return <Localized>{(
     <>
       <a ref={trigger} className={styles.trigger} href={original} aria-haspopup="dialog" onClick={(event) => {
         if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || !dialog.current?.showModal) return;
@@ -42,5 +43,5 @@ export function ImageLightbox({ image, title }: { image: StudyImage; title: stri
         {opened && <Image src={image.src} width={image.width} height={image.height} alt={image.alt} unoptimized className={styles.fullImage} />}
       </dialog>
     </>
-  );
+  )}</Localized>;
 }

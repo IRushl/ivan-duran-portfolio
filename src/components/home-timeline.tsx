@@ -1,4 +1,5 @@
 'use client';
+import { Localized } from '@/i18n/localized';
 
 import { useEffect, useRef } from 'react';
 import { homeExperience } from '@/data/home';
@@ -31,10 +32,10 @@ export function mountTimelineProgress(root: HTMLElement) {
 export function HomeTimeline() {
   const root=useRef<HTMLOListElement>(null);
   useEffect(() => { if (root.current) return mountTimelineProgress(root.current); },[]);
-  return <section className={`shell ${styles.experience}`} aria-labelledby="home-experience-title">
+  return <Localized>{<section className={`shell ${styles.experience}`} aria-labelledby="home-experience-title">
     <header className={styles.smallIntro}><p className={styles.sectionLabel}>Experiencia seleccionada</p><h2 id="home-experience-title">Diseño en contextos reales.</h2><p>Interfaces, producto y contenido: una trayectoria que conecta disciplinas.</p></header>
     <ol ref={root} className={styles.timelineList}>{homeExperience.map(job => <li key={job.company}>
       <p className={styles.timelinePeriod}>{job.period}</p><div><p className={styles.timelineCompany}>{job.company} <span>· Remoto</span></p><h3>{job.role}</h3><p className={styles.timelineDetail}>{job.detail}</p></div>
     </li>)}</ol>
-  </section>;
+  </section>}</Localized>;
 }

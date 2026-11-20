@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import { cameraPose, clamp, phaseAt, type LabSettings } from './trajectory';
 import { createSpatialBand } from './volume';
 import { immersiveMotion } from '../immersive-home/config';
+import { homePalette } from '@/data/home-palette';
 
 type Options = {
   mount: HTMLDivElement;
@@ -30,7 +31,7 @@ export function createMotionScene({ mount, journey, getSettings, isPaused, onSta
   const compact = window.matchMedia('(max-width: 760px)');
   const limited = (navigator.hardwareConcurrency || 4) <= 4;
   const scene = new THREE.Scene();
-  scene.fog = new THREE.FogExp2(0x07100b, .023);
+  scene.fog = new THREE.FogExp2(profile === 'immersive' ? homePalette.fog : 0x07100b, .023);
   const camera = new THREE.PerspectiveCamera(57, 1, .1, 160);
   const target = new THREE.Vector3();
   const pointer = new THREE.Vector2();
@@ -46,7 +47,7 @@ export function createMotionScene({ mount, journey, getSettings, isPaused, onSta
   let volumeKey = '', orbHover = 0;
   const worldBands = new Map<number, ReturnType<typeof createSpatialBand>>();
 
-  renderer.setClearColor(0x060b09, 0);
+  renderer.setClearColor(profile === 'immersive' ? homePalette.background : 0x060b09, 0);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.domElement.setAttribute('aria-hidden', 'true');
   renderer.domElement.dataset.motionCanvas = 'true';
@@ -69,16 +70,16 @@ export function createMotionScene({ mount, journey, getSettings, isPaused, onSta
   geometry.setAttribute('aSize', new THREE.BufferAttribute(sizes, 1));
   const material = new THREE.ShaderMaterial({
     transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
-    uniforms: { uPixelRatio: { value: 1 }, uOpacity: { value: 1 } },
+    uniforms: { uPixelRatio: { value: 1 }, uOpacity: { value: 1 }, uBaseColour: { value: profile === 'immersive' ? new THREE.Color(homePalette.accent).convertLinearToSRGB() : new THREE.Color(.61,.90,.23) }, uCoreColour: { value: profile === 'immersive' ? new THREE.Color(homePalette.bright).convertLinearToSRGB() : new THREE.Color(.92,1,.75) } },
     vertexShader: `attribute float aSize; uniform float uPixelRatio; varying float vDistance;
       void main(){vec4 view=modelViewMatrix*vec4(position,1.0); vDistance=-view.z;
       gl_PointSize=clamp(aSize*uPixelRatio*(18.0/max(1.0,-view.z)),1.0,32.0*uPixelRatio);
       gl_Position=projectionMatrix*view;}`,
-    fragmentShader: `uniform float uOpacity; varying float vDistance;
+    fragmentShader: `uniform float uOpacity; uniform vec3 uBaseColour; uniform vec3 uCoreColour; varying float vDistance;
       void main(){float d=length(gl_PointCoord-.5)*2.0; if(d>1.0)discard;
       float core=exp(-d*d*13.0);float halo=pow(1.0-d,2.2)*.5;
       float nearFade=smoothstep(.6,2.8,vDistance);float fog=exp(-vDistance*.019);
-      gl_FragColor=vec4(mix(vec3(.61,.90,.23),vec3(.92,1.0,.75),core), (core+halo)*fog*nearFade*uOpacity);}`,
+      gl_FragColor=vec4(mix(uBaseColour,uCoreColour,core), (core+halo)*fog*nearFade*uOpacity);}`,
   });
   const points = new THREE.Points(geometry, material);
   points.frustumCulled = false;
@@ -96,7 +97,7 @@ export function createMotionScene({ mount, journey, getSettings, isPaused, onSta
   const linePositions = new Float32Array(maximum * 6);
   const linesGeometry = new THREE.BufferGeometry();
   linesGeometry.setAttribute('position', new THREE.BufferAttribute(linePositions, 3).setUsage(THREE.DynamicDrawUsage));
-  const linesMaterial = new THREE.LineBasicMaterial({ color: 0xa3e635, transparent: true, opacity: .1, depthWrite: false, blending: THREE.AdditiveBlending });
+  const linesMaterial = new THREE.LineBasicMaterial({ color: profile === 'immersive' ? homePalette.accent : 0xa3e635, transparent: true, opacity: .1, depthWrite: false, blending: THREE.AdditiveBlending });
   const lines = new THREE.LineSegments(linesGeometry, linesMaterial);
   lines.frustumCulled = false;
   scene.add(lines);
@@ -105,14 +106,14 @@ export function createMotionScene({ mount, journey, getSettings, isPaused, onSta
   const landmark = new THREE.Group();
   const coreGeometry = new THREE.IcosahedronGeometry(2.8, 1);
   const coreMaterial = new THREE.MeshStandardMaterial(profile === 'immersive' ? {
-    color: 0x6b874b, transparent: true, opacity: .18, depthWrite: true,
+    color: homePalette.orbFaces, transparent: true, opacity: .18, depthWrite: true,
     polygonOffset: true, polygonOffsetFactor: 1, polygonOffsetUnits: 1,
     roughness: .26, metalness: .18, flatShading: true,
-    emissive: 0x3f5b29, emissiveIntensity: .12,
+    emissive: homePalette.orbEmission, emissiveIntensity: .12,
   } : { color: 0x46652a, roughness: .32, metalness: .55, flatShading: true, emissive: 0x37551a, emissiveIntensity: .3 });
   const core = new THREE.Mesh(coreGeometry, coreMaterial);
   const edgesGeometry = new THREE.EdgesGeometry(coreGeometry);
-  const edgesMaterial = new THREE.LineBasicMaterial({ color: 0xb4f254, transparent: true, opacity: profile === 'immersive' ? .23 : .38 });
+  const edgesMaterial = new THREE.LineBasicMaterial({ color: profile === 'immersive' ? homePalette.soft : 0xb4f254, transparent: true, opacity: profile === 'immersive' ? .23 : .38 });
   const edges = new THREE.LineSegments(edgesGeometry, edgesMaterial);
   if (profile === 'immersive') { core.renderOrder = 1; edges.renderOrder = 2; }
   landmark.add(core, edges);
@@ -136,11 +137,11 @@ export function createMotionScene({ mount, journey, getSettings, isPaused, onSta
   landmark.position.set(5.8, .8, -9);
   if (profile === 'home') { landmark.position.x = 8; landmark.scale.setScalar(.82); }
   scene.add(landmark);
-  const key = new THREE.PointLight(profile === 'immersive' ? 0xe0f2dc : 0xb6f75a, 220, 45, 2);
+  const key = new THREE.PointLight(profile === 'immersive' ? homePalette.key : 0xb6f75a, 220, 45, 2);
   key.position.set(3, 6, 0);
-  const rim = new THREE.PointLight(0x67cba6, 40, 35, 2);
+  const rim = new THREE.PointLight(profile === 'immersive' ? homePalette.rim : 0x67cba6, 40, 35, 2);
   rim.position.set(10, -1, -14);
-  scene.add(key, rim, new THREE.AmbientLight(0x6b9864, .6));
+  scene.add(key, rim, new THREE.AmbientLight(profile === 'immersive' ? homePalette.soft : 0x6b9864, .6));
 
   // Low, receding topography gives the field a horizon without external assets.
   const groundGeometry = new THREE.PlaneGeometry(75, 110, 36, 50);
@@ -151,7 +152,7 @@ export function createMotionScene({ mount, journey, getSettings, isPaused, onSta
     groundPositions.setY(i, -8 + Math.sin(x * .18 + z * .08) * Math.cos(z * .17) * Math.min(3, Math.abs(x) * .13));
   }
   groundGeometry.computeVertexNormals();
-  const groundMaterial = new THREE.MeshBasicMaterial({ color: 0x83b748, wireframe: true, transparent: true, opacity: .035, depthWrite: false });
+  const groundMaterial = new THREE.MeshBasicMaterial({ color: profile === 'immersive' ? homePalette.dim : 0x83b748, wireframe: true, transparent: true, opacity: .035, depthWrite: false });
   const ground = new THREE.Mesh(groundGeometry, groundMaterial);
   ground.position.z = -32;
   scene.add(ground);

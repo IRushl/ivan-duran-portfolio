@@ -1,4 +1,5 @@
 'use client';
+import { Localized } from '@/i18n/localized';
 
 import { useEffect, useRef, type ReactNode } from 'react';
 import { cancelCaseMotion, CASE_STAGGER, playCaseMotion } from './case-motion';
@@ -44,5 +45,5 @@ export function CaseReveal({ children }: { children: ReactNode }) {
     };
   }, []);
 
-  return <article ref={article}>{children}</article>;
+  return <Localized>{<article ref={article}>{children}</article>}</Localized>;
 }

@@ -1,3 +1,4 @@
+import { Localized } from '@/i18n/server-localized';
 import Link from 'next/link';
 import { EvidenceLabel } from './evidence-label';
 import { ArrowDown, ArrowRight, ArrowUpRight } from 'lucide-react';
@@ -21,7 +22,7 @@ const presentation = {
 };
 
 export function AuroraCase({ nextProject }: { nextProject: Project }) {
-  return <main id="contenido" data-cursor-parallax="aurora" tabIndex={-1} className={styles.case}><CursorParallax rootSelector={'[data-cursor-parallax="aurora"]'} /><CaseReveal>
+  return <Localized>{<main id="contenido" data-cursor-parallax="aurora" tabIndex={-1} className={styles.case}><CursorParallax rootSelector={'[data-cursor-parallax="aurora"]'} /><CaseReveal>
     <header className={styles.hero}>
       <nav aria-label="Ruta de navegación"><ol className="case-breadcrumb"><li><Link className="back-link" href="/#proyectos">Volver a proyectos</Link></li><li aria-current="page"><span aria-hidden="true">/</span> Aurora Seguros</li></ol></nav>
       <p className={`eyebrow ${styles.kicker}`} data-motion-hero="0">Aurora Seguros · Salud Flex / Insurtech · Prueba técnica</p>
@@ -73,5 +74,5 @@ export function AuroraCase({ nextProject }: { nextProject: Project }) {
       </div>
     </section>
     <Link className="case-next" href={`/proyectos/${nextProject.slug}`}><div><span className="eyebrow">Siguiente proyecto</span><strong>{nextProject.name}</strong></div><ArrowRight size={26} aria-hidden="true" /></Link>
-  </CaseReveal></main>;
+  </CaseReveal></main>}</Localized>;
 }

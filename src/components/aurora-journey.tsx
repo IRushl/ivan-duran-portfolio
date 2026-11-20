@@ -1,4 +1,5 @@
 'use client';
+import { Localized } from '@/i18n/localized';
 
 import { useEffect, useState } from 'react';
 import { ArrowDown } from 'lucide-react';
@@ -40,9 +41,9 @@ export function AuroraJourney() {
     };
   }, []);
 
-  return <nav className={styles.journey} aria-label="Etapas del caso Salud Flex">
+  return <Localized>{<nav className={styles.journey} aria-label="Etapas del caso Salud Flex">
     {steps.map(({ code, name, id }, index) => <a key={id} href={`#${id}`} aria-current={current === index ? 'step' : undefined} data-complete={index < current}>
       <span className="eyebrow">{code}</span><strong>{name}</strong><ArrowDown size={16} aria-hidden="true" />
     </a>)}
-  </nav>;
+  </nav>}</Localized>;
 }
