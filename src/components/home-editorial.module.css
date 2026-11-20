@@ -1,0 +1,31 @@
+.perspective,.personal { padding-block: clamp(4rem,7vw,7rem); border-top: 1px solid #394235; }
+.perspectiveIntro { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(2rem,5vw,5rem); align-items: start; }
+.perspective h2 { font-size: clamp(2.6rem,4.8vw,4.6rem); line-height: 1.06; font-weight: 550; letter-spacing: -.055em; margin-top: 1rem; }
+.perspective h2 span { color: var(--color-accent); }
+.prose { color: #d0d8cd; font-size: 1rem; line-height: 1.85; max-width: 60ch; }
+.perspectiveIntro .prose { padding-top: 2.5rem; }
+.prose p + p { margin-top: 1rem; color: #c0cbbd; }
+.formation { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(2rem,5vw,5rem); align-items: center; margin-top: clamp(3rem,6vw,5rem); }
+.formationCopy { max-width: 44ch; }
+.perspective h3 { font-size: clamp(1.8rem,2.8vw,2.7rem); line-height: 1.12; letter-spacing: -.04em; font-weight: 550; }
+.perspective h3 span { color: #c1d3b5; }
+.formationCopy > p,.collaboration > div > p:last-child { color: #c2ccbf; font-size: 1rem; line-height: 1.8; margin-top: 1.3rem; }
+.academicPhotos { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; max-width: 34rem; }
+.academicPhotos > figure:nth-child(2) { margin-top: 2.5rem; }
+.photograph { min-width: 0; }
+.photograph img { display: block; width: 100%; height: auto; border-radius: .55rem; }
+.photograph figcaption { padding-top: .9rem; }
+.photograph h4 { color: #eaf0e5; font-size: .95rem; font-weight: 550; line-height: 1.5; }
+.photograph figcaption p { color: #b9c7b2; font-size: .85rem; margin-top: .3rem; }
+.collaboration { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(2rem,5vw,5rem); align-items: center; margin-top: clamp(3rem,6vw,5rem); }
+.collaboration h3 { margin-top: 1rem; }
+.personalIntro { display: grid; grid-template-columns: 1.4fr .8fr; gap: clamp(2rem,6vw,6rem); align-items: center; }
+.personal h2 { font-size: clamp(2.3rem,3.8vw,3.7rem); line-height: 1.1; font-weight: 550; letter-spacing: -.045em; margin-top: 1rem; }
+.personal h2 span { color: #c6d7bc; }
+.personalLead { color: #ecf1e8; font-size: 1.15rem; line-height: 1.7; max-width: 46ch; margin-top: 1.5rem; }
+.personal .prose { margin-top: 1rem; }
+.personalPhoto { max-width: 21rem; justify-self: center; }
+.personal > ul { margin-top: 2.5rem; }
+@media(max-width:850px) { .perspectiveIntro { grid-template-columns: 1fr; gap: 1.5rem; } .perspectiveIntro .prose { padding-top: 0; } .formation { grid-template-columns: .9fr 1.1fr; gap: 2rem; } .collaboration { gap: 2rem; } .personalIntro { gap: 2rem; grid-template-columns: 1.1fr .8fr; } }
+@media(max-width:650px) { .perspective h2 { font-size: clamp(2.3rem,9vw,3rem); } .formation,.collaboration,.personalIntro { grid-template-columns: 1fr; gap: 2rem; } .academicPhotos { gap: 1rem; } .academicPhotos > figure:nth-child(2) { margin-top: 1.5rem; } .photograph h4 { font-size: .85rem; } .personalPhoto { width: min(90%,20rem); } .personal h2 { font-size: clamp(2.2rem,8.6vw,3rem); } }
+@media(max-width:350px) { .academicPhotos { grid-template-columns: 1fr; max-width: 16rem; margin-inline: auto; } .academicPhotos > figure:nth-child(2) { margin-top: 0; } }

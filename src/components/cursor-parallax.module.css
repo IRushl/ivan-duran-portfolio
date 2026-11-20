@@ -1,0 +1,18 @@
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  /* Reserve the full travel above/below the media; captions and controls stay fixed. */
+  .root :global(figure:has(> [data-parallax-scene]:not([data-parallax-scene='false']))) {
+    position: relative;
+    padding-block-start: 20px;
+  }
+  .root :global(figure:has(> [data-parallax-scene]:not([data-parallax-scene='false'])) > figcaption) {
+    margin-block-start: 28px;
+  }
+  .root :global([data-parallax-scene]:not([data-parallax-scene='false'])) {
+    transform: translate3d(var(--parallax-x, 0px), var(--parallax-y, 0px), 0);
+    transition: transform 360ms cubic-bezier(.22, 1, .36, 1);
+  }
+  .root :global([data-parallax-scene][data-parallax-active='true']) { transition-duration: 120ms; will-change: transform; }
+}
+@media (prefers-reduced-motion: reduce), (hover: none), (pointer: coarse) {
+  .root :global([data-parallax-scene]) { transform: none !important; transition: none !important; }
+}

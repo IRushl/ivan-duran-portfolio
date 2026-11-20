@@ -1,0 +1,29 @@
+.root { position: relative; isolation: isolate; }
+.stage { position: fixed; z-index: -1; inset: 0; pointer-events: none; clip-path: inset(var(--scene-clip-top,0px) 0 var(--scene-clip-bottom,0px)); }
+.scrim { position: absolute; inset: 0; background: linear-gradient(90deg,#101114a6,#10111430 65%,#10111418); }
+.hero { position: relative; }
+.hero [data-home-hero] { min-height: min(48rem,88svh); background: transparent; overflow: visible; align-items: center; }
+.hero [data-home-hero]::before { background: linear-gradient(90deg,#10111488,transparent 70%); }
+.hero [data-home-hero]::after { display: none; }
+.hero [data-home-hero] > div { width: min(100% - 2 * var(--gutter),75rem); display: grid; grid-template-columns: 1.1fr 1fr; column-gap: 3rem; padding-block: 2.8rem 1.8rem; }
+.hero [data-home-hero] > div > :not(:last-child) { grid-column: 1; }
+.hero [data-home-hero] > div > div:first-child { display: block; margin-bottom: 1.4rem; }
+.hero [data-home-hero] > div > div:first-child > span { display: block; margin-top: .4rem; font-size: .8rem; }
+.hero h1 { font-size: clamp(3rem,4.9vw,5.15rem); max-width: 15ch; }
+.hero [data-home-hero] > div > p { font-size: 1rem; line-height: 1.75; margin-top: 1.5rem; max-width: 48ch; }
+.hero [data-home-hero] > div > div:last-child { grid-column: 1 / -1; margin-top: 2rem; }
+.orbSpace { position: absolute; pointer-events: none; top: 7%; bottom: 13%; left: 47.5%; right: 8.5%; }
+.pause { position: fixed; z-index: 10; bottom: 1rem; right: var(--gutter); cursor: pointer; min-height: 44px; padding: .65rem .8rem; border: 1px solid #6b7d5d; border-radius: .25rem; background: #101910ed; color: #c8d6bb; font-size: .7rem; }
+.pause:hover { border-color: #a3e635; }
+@media(max-width:900px) {
+  .hero [data-home-hero] > div { grid-template-columns: 1.2fr 1fr; column-gap: 1rem; }
+  .hero h1 { font-size: clamp(2.7rem,5.4vw,4rem); }
+  .orbSpace { left: 51%; right: 4%; }
+}
+@media(max-width:650px) {
+  .hero [data-home-hero] > div { display: flex; flex-direction: column; padding-top: 4.5rem; }
+  .hero h1 { font-size: clamp(2.7rem,9vw,3.7rem); max-width: 17ch; margin-bottom: 15rem; }
+  .hero [data-home-hero] > div > div:last-child { margin-top: 1.5rem; }
+  .orbSpace { width: min(84vw,22rem); height: 18rem; top: auto; bottom: 7rem; left: 50%; right: auto; transform: translateX(-50%); }
+  .hero [data-home-hero] { min-height: 0; }
+}

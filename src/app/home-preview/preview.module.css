@@ -1,0 +1,12 @@
+.comparison { position: relative; z-index: 1; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem 2rem; padding: 1rem var(--gutter); background: #151c12; border-bottom: 1px solid #4a5b3c; }
+.label { color: #b9e78f; font: .72rem/1.5 var(--font-mono); text-transform: uppercase; letter-spacing: .04em; }
+.comparison p { color: #b7c3ae; font-size: .72rem; margin-top: .3rem; }
+.versions { display: flex; flex-wrap: wrap; gap: .3rem; border: 1px solid #69795a; padding: .25rem; border-radius: .35rem; }
+.versions a { display: inline-flex; align-items: center; min-height: 44px; padding: .65rem .85rem; font-size: .8rem; color: #c9d5bf; border-radius: .2rem; }
+.versions a[aria-current] { color: #11170b; background: #b1e969; }
+.versions a:hover:not([aria-current]) { color: #c6f69b; background: #23311c; }
+.references { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+.references a { display: inline-flex; align-items: center; min-height: 44px; color: #c0d2b1; font-size: .75rem; }
+.references a:hover { color: #c6f69b; text-decoration: underline; }
+@media(max-width:760px) { .comparison { gap: .7rem; } .versions { width: 100%; } .versions a { flex: 1; justify-content: center; } .references { gap: 1.5rem; } }
+@media(max-width:650px) { .comparison { padding-block: .65rem; gap: .4rem; } .comparison > div:first-child { display: none; } .versions a { padding: .5rem .35rem; font-size: .7rem; } .references a { min-height: 36px; font-size: .7rem; } }

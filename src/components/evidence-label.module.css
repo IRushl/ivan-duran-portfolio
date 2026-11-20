@@ -1,0 +1,18 @@
+.label {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin-bottom: .65rem;
+  padding: .25rem .6rem;
+  border-left: 2px solid currentColor;
+  color: inherit;
+  font-family: var(--font-sans), sans-serif;
+  font-size: .875rem;
+  font-weight: 550;
+  line-height: 1.5;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.label[data-evidence-kind=target] { border-left-style: dashed; }
+.label[data-evidence-kind=observed] { border-left-width: 4px; }
+.label[data-evidence-kind=validated] { border-left-style: double; border-left-width: 4px; }

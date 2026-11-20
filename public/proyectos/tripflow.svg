@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" width="960" height="600">
+<defs><pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#78b9b8" stroke-opacity=".27"/></pattern></defs>
+<path fill="#0e3036" d="M0 0h960v600H0z"/><path fill="url(#grid)" d="M0 0h960v600H0z"/>
+<path d="M47 120V74h46m774 0h46v46M47 480v46h46m774 0h46v-46" fill="none" stroke="#78b9b8" stroke-width="2"/>
+
+<g transform="translate(632 304)">
+<ellipse rx="62" ry="43" transform="rotate(-32) translate(0 0)" fill="none" stroke="#77b9b9" opacity="0.75"/>
+<ellipse rx="78" ry="58" transform="rotate(-32) translate(4 0)" fill="none" stroke="#77b9b9" opacity="0.69"/>
+<ellipse rx="94" ry="73" transform="rotate(-32) translate(8 0)" fill="none" stroke="#77b9b9" opacity="0.63"/>
+<ellipse rx="110" ry="88" transform="rotate(-32) translate(0 0)" fill="none" stroke="#77b9b9" opacity="0.58"/>
+<ellipse rx="126" ry="103" transform="rotate(-32) translate(4 0)" fill="none" stroke="#77b9b9" opacity="0.52"/>
+<ellipse rx="142" ry="118" transform="rotate(-32) translate(8 0)" fill="none" stroke="#77b9b9" opacity="0.46"/>
+<ellipse rx="158" ry="133" transform="rotate(-32) translate(0 0)" fill="none" stroke="#77b9b9" opacity="0.40"/>
+<ellipse rx="174" ry="148" transform="rotate(-32) translate(4 0)" fill="none" stroke="#77b9b9" opacity="0.34"/>
+<ellipse rx="190" ry="163" transform="rotate(-32) translate(8 0)" fill="none" stroke="#77b9b9" opacity="0.29"/>
+<path d="M-162 95q72-70 114-40T38 8q27-65 73-53t57-65" fill="none" stroke="#dbfaf2" stroke-width="3" stroke-dasharray="6 7" stroke-linecap="round"/>
+<circle cx="-162" cy="95" r="7" fill="#dbfaf2"/>
+<circle cx="168" cy="-110" r="13" fill="#163a3c" stroke="#dbfaf2" stroke-width="2"/>
+<circle cx="168" cy="-110" r="4" fill="#dbfaf2"/>
+<circle cx="34" cy="20" r="5" fill="#dbfaf2"/>
+</g>
+<text x="72" y="125" fill="#a4d7d5" font-family="monospace" font-size="14" letter-spacing="2">03 / EXPERIENCIA DE VIAJE</text>
+<text x="68" y="290" fill="#e3f9f6" font-family="Arial,sans-serif" font-weight="bold" font-size="69" letter-spacing="-2.7">TripFlow</text>
+<text x="68" y="352" fill="#e3f9f6" font-family="Arial,sans-serif" font-weight="bold" font-size="69" letter-spacing="-2.7">App</text>
+<path d="M74 398h104" stroke="#a4d7d5"/>
+<text x="73" y="432" fill="#a4d7d5" font-family="monospace" font-size="14" letter-spacing="2">SEGUIMIENTO DE GASTOS</text>
+
+</svg>

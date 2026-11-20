@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="350" height="360" viewBox="120 0 340 350">
+<title>Ritual Amarte · reconstrucción vectorial manual basada en imagen</title>
+<defs>
+<linearGradient id="rGrad" gradientUnits="userSpaceOnUse" x1="160" y1="70" x2="310" y2="150"><stop offset="0%" stop-color="#6e4f3d"/><stop offset="53%" stop-color="#7e5b42"/><stop offset="100%" stop-color="#b28a5e"/></linearGradient>
+<linearGradient id="aGrad" gradientUnits="userSpaceOnUse" x1="240" y1="170" x2="440" y2="300"><stop offset="0%" stop-color="#8c6245"/><stop offset="41%" stop-color="#b18a5b"/><stop offset="65%" stop-color="#cfaa6a"/><stop offset="100%" stop-color="#73543f"/></linearGradient>
+<linearGradient id="legGrad" gradientUnits="userSpaceOnUse" x1="200" y1="128" x2="370" y2="281"><stop offset="0%" stop-color="#604331"/><stop offset="44%" stop-color="#b28e59"/><stop offset="70%" stop-color="#97704a"/><stop offset="100%" stop-color="#6a4e3b"/></linearGradient>
+<linearGradient id="swashGrad" gradientUnits="userSpaceOnUse" x1="139" y1="270" x2="430" y2="185"><stop offset="0%" stop-color="#c9a263"/><stop offset="11%" stop-color="#e0bd77"/><stop offset="38%" stop-color="#aa7744"/><stop offset="71%" stop-color="#9e774b"/><stop offset="100%" stop-color="#694b33"/></linearGradient>
+<linearGradient id="wordGrad" gradientUnits="userSpaceOnUse" x1="41" y1="471" x2="560" y2="510"><stop offset="0%" stop-color="#735443"/><stop offset="60%" stop-color="#8e674a"/><stop offset="100%" stop-color="#5e4437"/></linearGradient>
+<linearGradient id="starGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8c6044"/><stop offset="0.5" stop-color="#dfb568"/><stop offset="1" stop-color="#79573f"/></linearGradient>
+<filter id="shadow" x="-15%" y="-15%" width="130%" height="130%" color-interpolation-filters="sRGB"><feGaussianBlur in="SourceAlpha" stdDeviation="1.2" result="blur"/><feOffset in="blur" dx="1.1" dy="1.2" result="off"/><feComponentTransfer in="off" result="low"><feFuncA type="linear" slope="0.17"/></feComponentTransfer><feMerge><feMergeNode in="low"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<g id="RA" filter="url(#shadow)">
+<path id="letra-R" d="M149 21.6 C160 21.1 175 21.3 192 21.3 L253 21.3
+ C280 22.0 306.5 44.2 308.3 72.7 C310.9 99.8 291.2 124 262.1 132.4
+ C241.3 138.4 211.2 134.7 194 135.5 L194 185
+ C194 200.3 199.1 209.2 212.4 210.7 L153 210.7
+ C170.8 209.0 175.4 196.1 175.4 178.2 L175.4 54.5
+ C175.4 33.5 170.7 23.4 149 21.6 Z
+ M193.5 24.6 L193.5 132.5 L214 132.5
+ C261.3 131.5 285.7 110.7 285.7 78.1
+ C285.7 45 267.1 24.6 244 24.6 Z" fill="url(#rGrad)" fill-rule="evenodd"/>
+<path id="letra-A" d="M319.4 100.8 L404.9 289.4
+ C414.8 310.3 420.9 324.1 438.8 325.5 L378.8 325.5
+ C388.1 324.3 390.9 322.4 389 312.1
+ C387.8 306.2 384.9 298.6 380.4 286.5 L319.5 123.6
+ L250.6 297.2
+ C242.8 316.4 248.7 323.6 264.3 325.7 L211.6 325.7
+ C228.5 325 235 312.5 243.3 292.1 Z" fill="url(#aGrad)"/>
+<path id="pierna-R" d="M192.8 133.3 C223 131.3 244 145.3 260 166.2
+ C282 194 300 224.3 327.6 250.8 C342 264.9 356 274 378.8 274.2
+ C358 276.3 341.6 272.8 328.2 266.8 C301 254.5 284 232.7 265.4 204.8
+ C240.6 166.9 220.4 136.5 192.8 133.3 Z" fill="url(#legGrad)"/>
+<path id="ornamento-central" d="M136.6 243.1 C132.6 259.6 138.1 270.2 150.1 275.1
+ C169 285.7 194.3 278.9 219.1 264.4 C253.4 244.5 293.8 211.8 329.9 191.5
+ C359.4 174.5 387.9 170.1 407.6 173.5 C428.8 177.1 434.2 192.7 431.1 210.9
+ C429.2 228.3 410.4 249.1 395.3 259.6
+ C411.8 238.1 422.4 215.7 423.3 201.3 C423.8 183.6 413.7 177.7 400.6 176.5
+ C378.6 174.8 359.7 184.4 330.2 203.3 C299.9 222.8 257 257.4 222.1 279.1
+ C187 300.6 158.4 296.8 143.9 279.9 C135.4 269.2 134.2 252 136.6 243.1 Z" fill="url(#swashGrad)"/>
+</g>
+<path id="estrella" d="M385 30.5 L387.5 64.7 L403.4 47.4 L391.4 66.7
+ L419.3 69.4 L391.4 71.5 L403.7 91.2 L387.3 75.2
+ L385 109.1 L382.7 75.2 L365.3 91 L378.7 71.5
+ L351.9 69.4 L378.6 66.7 L366.1 48 L382.7 64.7 Z" fill="url(#starGrad)"/>
+</svg>

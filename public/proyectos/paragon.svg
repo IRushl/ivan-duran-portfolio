@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" width="960" height="600">
+<defs><pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#b593d4" stroke-opacity=".27"/></pattern></defs>
+<path fill="#30213f" d="M0 0h960v600H0z"/><path fill="url(#grid)" d="M0 0h960v600H0z"/>
+<path d="M47 120V74h46m774 0h46v46M47 480v46h46m774 0h46v-46" fill="none" stroke="#b593d4" stroke-width="2"/>
+
+<g transform="translate(619 292)">
+<path d="M0-99q-51-33-153-10v215Q-49 86 0 119q53-32 153-14v-214Q52-132 0-99z" fill="#140f20" stroke="#b9a4e0" transform="translate(13 17)"/>
+<path d="M0-99q-51-33-153-10v215Q-49 86 0 119q53-32 153-14v-214Q52-132 0-99z" fill="#dfd1fa" stroke="#eee5ff"/>
+<path d="M0-99v218" stroke="#30213f"/>
+<path d="M-129-78q70-14 108 10v67q-36-19-108-9z" fill="#8d6bb2"/>
+<path d="M-129 17q65-9 105 8m-105 11q65-9 105 8m-105 11q65-9 81 2M22-68q35-17 107-10M22-45q35-17 107-10M22-22q35-17 85-10M22 9q35-17 107-10M22 31q35-17 107-10M22 53q35-17 85-10" stroke="#573a72" stroke-width="2" fill="none"/>
+</g>
+<text x="72" y="125" fill="#dcc3f7" font-family="monospace" font-size="14" letter-spacing="2">04 / REDISEÑO UX/UI</text>
+<text x="68" y="327" fill="#f9efff" font-family="Arial,sans-serif" font-weight="bold" font-size="76" letter-spacing="-2.7">Paragón</text>
+<path d="M74 369h104" stroke="#dcc3f7"/>
+<text x="73" y="405" fill="#dcc3f7" font-family="monospace" font-size="14" letter-spacing="2">EXPERIENCIA DE CONTENIDO</text>
+
+</svg>

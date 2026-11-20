@@ -1,0 +1,3 @@
+.surface { position: absolute; inset: 0; background: radial-gradient(ellipse at 72% 48%, #20391b70, transparent 65%), #070c09; }
+.surface canvas, .fallback { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.surface[data-mode='webgl'] .fallback { visibility: hidden; }

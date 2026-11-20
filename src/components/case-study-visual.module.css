@@ -1,0 +1,35 @@
+.figure { min-width: 0; }
+.image { display: block; width: 100%; height: auto; }
+.screen, .flat { min-width: 0; overflow: hidden; background: var(--surface); }
+.flat { border: 1px solid var(--border); border-radius: .5rem; }
+
+.phone {
+  padding: clamp(.26rem, .65vw, .52rem);
+  background: #202226;
+  border: 1px solid #47494f;
+  border-radius: clamp(.75rem, 2vw, 1.6rem);
+  box-shadow: 0 12px 28px #0004;
+}
+.phone .screen { border-radius: clamp(.5rem, 1.55vw, 1.13rem); }
+.desktop { border: 1px solid #42444a; border-radius: .65rem; overflow: hidden; background: #202226; box-shadow: 0 14px 32px #0004; }
+.chrome { display: flex; gap: .3rem; align-items: center; padding: .5rem .65rem; border-bottom: 1px solid #42444a; }
+.chrome i { width: .35rem; height: .35rem; background: #787b82; border-radius: 50%; }
+.preview { max-height: clamp(11rem, 28vw, 26rem); overflow: hidden; }
+.phone .preview { max-height: none; aspect-ratio: 376 / 853; }
+
+.caption { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .15rem .75rem; margin-top: .65rem; font-size: .88rem; }
+.caption > div { flex: 1 1 10ch; }
+.caption p { color: var(--muted); font-size: .88rem; line-height: 1.5; }
+.caption p { margin-top: .22rem; }
+.trigger, .original { display: inline-flex; align-items: center; gap: .4rem; min-height: 2.75rem; color: var(--color-foreground); text-decoration: underline; text-underline-offset: .2em; }
+.trigger:hover, .original:hover { color: var(--color-accent); }
+.trigger svg, .original svg { flex-shrink: 0; }
+.dialog { width: min(calc(100% - 1.5rem), 72rem); max-width: none; max-height: calc(100dvh - 1.5rem); margin: auto; padding: 0 clamp(.75rem, 2vw, 1.5rem) 1.5rem; overflow: auto; overscroll-behavior: contain; border: 1px solid var(--control-border); border-radius: .8rem; background: var(--color-background); color: var(--color-foreground); }
+.dialog::backdrop { background: #000d; }
+.dialogBar { position: sticky; top: 0; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: .75rem; border-bottom: 1px solid var(--border); background: var(--color-background); }
+.dialogBar h2 { font-size: clamp(1rem, 2.2vw, 1.35rem); font-weight: 650; }
+.close { display: grid; flex: 0 0 2.75rem; width: 2.75rem; height: 2.75rem; place-items: center; border: 1px solid var(--control-border); border-radius: .4rem; cursor: pointer; }
+.close:hover { background: var(--surface); }
+.original { font-size: .9rem; }
+.fullImage { display: block; max-width: 100%; width: auto; height: auto; margin-inline: auto; }
+:global(html):has(.dialog[open]) { overflow: hidden; }

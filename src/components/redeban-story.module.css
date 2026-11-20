@@ -1,0 +1,93 @@
+.story { list-style: none; }
+.step { min-width: 0; }
+.story > .step {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+  gap: clamp(1.25rem, 4vw, 3.5rem);
+  align-items: center;
+  padding-block: clamp(1.25rem, 3vw, 2rem);
+  border-top: 1px solid var(--border);
+}
+.copy, .visual { min-width: 0; }
+.number { color: var(--color-accent); margin-bottom: .6rem; }
+.copy h3 { color: var(--redeban-heading, var(--color-foreground)); font-size: clamp(1.6rem, 3vw, 2.8rem); line-height: 1.08; letter-spacing: -.045em; font-weight: 600; text-wrap: balance; }
+.copy dl { display: grid; gap: .7rem; margin-top: 1.2rem; }
+.copy dt, .statePanel dt { font-weight: 650; }
+.copy dd, .copy > p:not(.number), .statePanel dd { color: var(--muted); line-height: 1.6; margin-top: .25rem; }
+.story .copy dl > div:last-child { border-inline-start: 2px solid var(--color-accent); padding-inline-start: .8rem; }
+.visual { width: 100%; max-width: 30rem; justify-self: center; }
+.story .visual[data-phone] { max-width: 12rem; }
+
+.journeyNav { margin-bottom: 1.5rem; }
+.journeyNav ol { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .6rem; }
+.journeyNav a { display: flex; flex-wrap: wrap; align-items: center; gap: .3rem .55rem; min-height: 3rem; border-bottom: 2px solid var(--border); padding: .6rem .25rem; font-size: .88rem; }
+.journeyNav a span { color: var(--color-accent); font-family: var(--font-mono); font-size: .75rem; }
+.journeyNav a:is(:hover, :focus-visible) { border-color: var(--color-accent); }
+.journeyNav a[aria-current='step'] { color: var(--color-accent); border-color: var(--color-accent); }
+.journeyNav a { position: relative; }
+.journeyNav a::after { position: absolute; content: ''; height: 2px; inset-inline: 0; bottom: -2px; background: var(--color-accent); transform: scaleX(0); transform-origin: left; }
+.journeyNav a[data-complete='true']::after { transform: scaleX(1); }
+.journey { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 1.25rem; list-style: none; }
+.journey > .step { grid-column: span 3; display: grid; grid-template-rows: auto 1fr; align-items: start; gap: 1.25rem; border: 1px solid var(--border); background: var(--surface); padding: clamp(1rem, 2.2vw, 1.5rem); scroll-margin-top: 5rem; }
+.journey > .step[data-phone] { grid-column: span 2; }
+.journey > .step:is(:target, :focus-within, [data-current='true']) { border-color: var(--color-accent); }
+.journey .copy h4 { font-size: clamp(1.1rem, 1.65vw, 1.45rem); line-height: 1.2; font-weight: 600; letter-spacing: -.03em; }
+.journey .copy > p:last-child { font-size: .92rem; }
+.journey .visual { max-width: none; align-self: start; }
+.journey .visual > figure > div { max-width: min(100%, calc(22rem * var(--image-ratio))); margin-inline: auto; }
+
+.states { border-block: 1px solid var(--border); padding-block: 1.25rem; }
+.stateControls { display: flex; flex-wrap: wrap; gap: .6rem; margin-bottom: 1.5rem; }
+.stateControls button { cursor: pointer; min-height: 2.75rem; padding: .55rem 1rem; border: 1px solid var(--control-border); font-weight: 600; }
+.stateControls button:hover { border-color: var(--color-accent); }
+.stateControls button:active { background: var(--surface); }
+.stateControls button[aria-selected='true'] { background: var(--color-accent); color: var(--color-background); border-color: var(--color-accent); }
+.statePanels { display: grid; gap: 1.5rem; }
+.statePanels[data-ready='true'] { gap: 0; }
+.statePanel { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .8fr); gap: clamp(1.5rem, 4vw, 3rem); align-items: start; }
+/* Share the tallest natural panel height to keep tab changes stable. */
+.statePanels[data-ready='true'] > .statePanel { grid-area: 1 / 1; visibility: hidden; pointer-events: none; }
+.statePanels[data-ready='true'] > .statePanel[data-selected='true'] { visibility: visible; pointer-events: auto; }
+.statePanel h4 { font-size: clamp(1.8rem, 3vw, 3rem); font-weight: 600; letter-spacing: -.04em; margin-block: .4rem 1.2rem; }
+.statePanel dl { display: grid; gap: 1rem; }
+.statePanel > div:first-child { max-width: 52ch; }
+.stateVisual { width: min(100%, 12rem); justify-self: center; }
+
+@media (min-width: 1000px) and (min-height: 740px) and (prefers-reduced-motion: no-preference) {
+  .story .visual { position: sticky; top: 5rem; align-self: start; }
+}
+
+@media (max-width: 780px) {
+  .story > .step { grid-template-columns: minmax(0, 1fr); }
+  .journey { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .journey > .step, .journey > .step[data-phone] { grid-column: auto; }
+  .journey > .step:last-child { grid-column: 1 / -1; }
+  .journeyNav ol { display: flex; flex-wrap: wrap; gap: .25rem 1rem; }
+  .journeyNav a { min-height: 2.75rem; }
+  .statePanel { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 520px) {
+  .journey { grid-template-columns: minmax(0, 1fr); }
+  .journey > .step:last-child { grid-column: auto; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .stateControls button { transition: transform var(--case-motion-fast) var(--case-motion-ease), color var(--case-motion-fast) ease, background-color var(--case-motion-fast) ease, border-color var(--case-motion-fast) ease; }
+  .journey > .step, .journeyNav a { transition: border-color var(--case-motion-fast) ease, transform var(--case-motion-fast) var(--case-motion-ease); }
+  .journeyNav a::after { transition: transform var(--case-motion-copy) var(--case-motion-ease); }
+  .story .visual, .journey .visual { transition: opacity var(--case-motion-copy) ease, transform var(--case-motion-copy) var(--case-motion-ease); }
+  [data-interactive='true'] > .step:not([data-current='true']) > .visual { opacity: .86; transform: translateY(-3px) scale(.995); }
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .journey > .step:hover { transform: translateY(-2px); }
+  .stateControls button:hover { transform: translateY(-1px); }
+}
+
+@media print {
+  .stateControls { display: none; }
+  .statePanels[data-ready='true'] { gap: 1.5rem; }
+  .statePanels[data-ready='true'] > .statePanel { grid-area: auto; visibility: visible; pointer-events: auto; }
+  .story .visual { position: static; }
+}

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" width="960" height="600">
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#de8a89" stroke-opacity=".27"/>
+    </pattern>
+  </defs>
+  <path fill="#421c29" d="M0 0h960v600H0z"/>
+  <path fill="url(#grid)" d="M0 0h960v600H0z"/>
+  <path d="M47 120V74h46m774 0h46v46M47 480v46h46m774 0h46v-46" fill="none" stroke="#de8a89" stroke-width="2"/>
+  <g fill="none" stroke="#e99498">
+    <circle cx="567" cy="355" r="77" stroke-opacity=".46"/>
+    <circle cx="567" cy="355" r="60" stroke-opacity=".7"/>
+    <circle cx="789" cy="239" r="96" stroke-opacity=".46"/>
+    <circle cx="789" cy="239" r="78" stroke-opacity=".7"/>
+    <path d="M552 399h78l131-115h57M573 306h68l113-101h41" stroke-opacity=".6" stroke-dasharray="4 6"/>
+  </g>
+  <path d="M567 355h68l129-116h25" fill="none" stroke="#ffd0c6" stroke-width="2.5"/>
+  <circle cx="567" cy="355" r="35" fill="#612837" stroke="#ffd0c6" stroke-width="2"/>
+  <circle cx="789" cy="239" r="45" fill="#612837" stroke="#ffd0c6" stroke-width="2"/>
+  <path d="M553 355h28m-14-14v28m204-130 12 12 23-24" fill="none" stroke="#fff0e9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="72" y="125" fill="#ffbdba" font-family="monospace" font-size="14" letter-spacing="2">01 / DISEÑO DE PRODUCTO</text>
+  <text x="68" y="327" fill="#fff0e9" font-family="Arial,sans-serif" font-size="76" font-weight="bold" letter-spacing="-2.7">Redeban</text>
+  <path d="M74 369h104" stroke="#ffbdba"/>
+  <text x="73" y="405" fill="#ffbdba" font-family="monospace" font-size="14" letter-spacing="2">COBRAR Y VERIFICAR</text>
+</svg>
