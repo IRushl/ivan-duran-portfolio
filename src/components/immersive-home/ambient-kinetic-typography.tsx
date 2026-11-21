@@ -1,12 +1,14 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, type CSSProperties } from 'react';
 import { useLocale } from '@/i18n/provider';
 import { motionPreferenceEvent, readMotionPreference } from '@/lib/motion-preference';
 import styles from './ambient-kinetic-typography.module.css';
 
-// Five fixed lanes prevent random collisions. Each pair shares a lane and cross-fades.
-const lanes=[['UX Research','Product Marketing'],['Interaction Design','Design Systems'],['Diseño','Prototipado'],['Product Design','Marketing'],['UX']];
+// Seven reserved lanes keep the reading area clear; staggered cycles avoid a visible loop.
+const lanes=[['UX','UX/UI'],['UX Research','Product Thinking'],['Product Design','Product Marketing'],['Marketing','Estrategia'],['Interaction Design','Diseño de interfaces'],['Design Systems','Prototipado'],['Arquitectura de información','Experiencia de usuario','IA aplicada','Creative Technology']];
+const cycles=[34,43,37,47,41,39,52];
+const phases=[3,17,8,28,12,21,5];
 
 export function AmbientKineticTypography() {
   const root=useRef<HTMLDivElement>(null);
@@ -40,8 +42,8 @@ export function AmbientKineticTypography() {
     return()=>{observer?.disconnect();resize?.disconnect();document.removeEventListener('visibilitychange',sync);document.removeEventListener(motionPreferenceEvent,sync);reduced.removeEventListener('change',sync)};
   },[]);
   return <div ref={root} className={styles.layer} aria-hidden="true" data-ambient-typography data-running="false">
-    {lanes.map((terms,index)=><div className={styles.lane} data-depth={index%3} key={index}><div className={styles.drift}>
-      {terms.map(term=><span className={styles.word} key={term}>{t(term)}</span>)}
+    {lanes.map((terms,index)=><div className={styles.lane} data-depth={index%3} data-terms={terms.length} key={index}><div className={styles.drift}>
+      {terms.map((term,word)=><span className={styles.word} key={term} style={{'--word-cycle':`${cycles[index]}s`,'--word-delay':`${-phases[index]-word*cycles[index]/terms.length}s`} as CSSProperties}>{t(term)}</span>)}
     </div></div>)}
   </div>;
 }

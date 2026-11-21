@@ -2,12 +2,17 @@
 .intro { display:grid; grid-template-columns:1fr 1fr; align-items:start; gap:clamp(1.5rem,5vw,5rem); }
 .intro h2 { font-size:clamp(2rem,3.3vw,3.2rem); line-height:1.1; font-weight:550; letter-spacing:-.045em; color:var(--home-bright); max-width:22ch; }
 .intro > p { font-size:.95rem; line-height:1.8; color:var(--home-muted); max-width:58ch; }
-.grid { display:grid; grid-template-columns:1fr 1fr 1.25fr; gap:clamp(1rem,2.5vw,2rem); margin-top:2rem; }
+.grid { display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,1fr); align-items:start; gap:2.5rem clamp(2rem,5vw,5rem); margin-top:2.5rem; }
 .figure { min-width:0; margin:0; }
-.image { height:clamp(250px,27vw,350px); position:relative; border:1px solid var(--home-border); border-radius:.55rem; overflow:hidden; background:color-mix(in srgb,var(--home-surface) 55%,transparent); }
+.figure:first-child { grid-row:span 2; }
+.figure:nth-child(2) { display:grid; grid-template-columns:minmax(0,.8fr) minmax(0,1fr); align-items:center; gap:1.3rem; }
+.image { position:relative; aspect-ratio:4/3; border:1px solid var(--home-border); border-radius:.55rem; overflow:hidden; background:color-mix(in srgb,var(--home-surface) 55%,transparent); }
+.figure:first-child .image { aspect-ratio:3/4; max-width:32rem; }
+.figure:nth-child(2) .image { aspect-ratio:3/4; }
 .image img { position:absolute; inset:0; display:block; width:100%; height:100%; object-fit:contain; }
-.figure figcaption { padding-top:1rem; }
-.figure h3 { font-size:.88rem; font-weight:550; line-height:1.55; color:var(--home-emphasis); }
-.figure p { margin-top:.5rem; color:var(--home-muted); font-size:.83rem; line-height:1.75; }
-@media(max-width:900px) { .intro { grid-template-columns:1fr; gap:1rem; } .intro > p { max-width:65ch; } .image { height:235px; } }
-@media(max-width:650px) { .grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.6rem 1rem; } .figure:last-child { grid-column:1/-1; } .image { height:auto; aspect-ratio:3/4; } .figure:last-child .image { aspect-ratio:4/3; } .intro h2 { font-size:clamp(2rem,8vw,2.5rem); } .figure h3 { font-size:.82rem; } .figure:last-child img { object-fit:contain; } }
+.figure figcaption { padding-top:1rem; max-width:55ch; }
+.figure:nth-child(2) figcaption { padding-top:0; }
+.figure h3 { font-size:.92rem; font-weight:550; line-height:1.55; color:var(--home-emphasis); }
+.figure p { margin-top:.5rem; color:var(--home-muted); font-size:.86rem; line-height:1.75; }
+@media(max-width:900px) { .intro { grid-template-columns:1fr; gap:1rem; } .intro > p { max-width:65ch; } .grid { gap:2rem; } .figure:nth-child(2) { grid-template-columns:minmax(0,.8fr) minmax(0,1fr); gap:1rem; } .figure h3 { font-size:.85rem; } .figure p { font-size:.8rem; } }
+@media(max-width:650px) { .grid { grid-template-columns:minmax(0,1fr); gap:2.5rem; } .figure:first-child { grid-row:auto; } .figure:nth-child(2) { display:block; max-width:19rem; justify-self:end; } .figure:nth-child(2) figcaption { padding-top:1rem; } .figure:first-child .image { max-width:none; } .intro h2 { font-size:clamp(2rem,8vw,2.5rem); } .figure h3 { font-size:.95rem; } .figure p { font-size:.9rem; } }

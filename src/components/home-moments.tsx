@@ -14,7 +14,7 @@ export function HomeMoments() {
   return <Localized><section className={`shell ${styles.section}`} aria-labelledby="home-moments-title" data-home-moments>
     <header className={styles.intro}><h2 id="home-moments-title">Momentos que construyeron mi camino.</h2><p>Mi recorrido también se ha construido entre aprendizajes, desafíos compartidos y personas que han acompañado cada etapa. Estos son algunos de los momentos que ayudaron a definir mi manera de pensar y diseñar.</p></header>
     <HomeAboutReveal className={styles.grid}>{moments.map(({photo,title,caption,alt})=><figure key={photo.src} className={styles.figure} data-about-reveal>
-      <div className={styles.image}><Image src={photo.src} width={photo.width} height={photo.height} alt={alt} sizes={photo===homePhotos.collaboration?"(max-width:650px) 90vw, (max-width:900px) 36vw, 470px":"(max-width:650px) 45vw, (max-width:900px) 28vw, 380px"} loading="lazy"/></div>
+      <div className={styles.image}><Image src={photo.src} width={photo.width} height={photo.height} alt={alt} sizes={photo===homePhotos.industrial?"(max-width:650px) 90vw, (max-width:900px) 44vw, 520px":photo===homePhotos.marketing?"(max-width:650px) 80vw, (max-width:900px) 20vw, 270px":"(max-width:650px) 90vw, (max-width:900px) 44vw, 600px"} loading="lazy"/></div>
       <figcaption><h3>{title}</h3><p>{caption}</p></figcaption>
     </figure>)}</HomeAboutReveal>
   </section></Localized>;
