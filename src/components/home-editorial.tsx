@@ -5,20 +5,33 @@ import { homePhotos, type HomePhoto } from '@/data/home-photos';
 import { InterestCards } from './immersive-home/interest-cards';
 import home from './home.module.css';
 import styles from './home-editorial.module.css';
+import about from './home-about.module.css';
+import { HomeAboutReveal } from './home-about-reveal';
 
 function Photograph({ photo, children, className = '', sizes }: { photo: HomePhoto; children?: ReactNode; className?: string; sizes: string }) {
   return <Localized>{<figure className={`${styles.photograph} ${className}`}><Image src={photo.src} width={photo.width} height={photo.height} alt={photo.alt} sizes={sizes}/>{children && <figcaption>{children}</figcaption>}</figure>}</Localized>;
 }
 
 export function HomePerspective() {
-  return <Localized>{<section id="perfil" tabIndex={-1} className={`shell ${styles.perspective}`} aria-labelledby="home-profile-title">
-    <div className={styles.perspectiveIntro}><div><p className={home.sectionLabel}>Mi perspectiva</p><h2 id="home-profile-title">Diseño para las personas.<br/><span>Con mirada de producto.</span></h2></div><div className={styles.prose}><p>Vengo del Diseño Industrial, donde aprendí a entender cómo las personas usan lo que diseñamos. Más adelante amplié esa base con una especialización en mercadotecnia, lo que fortaleció mi lectura de negocio.</p><p>Hoy conecto investigación, interfaces y prototipos digitales para construir productos más claros, útiles y consistentes. Me interesa trabajar en la intersección entre diseño, producto y tecnología, incluida la IA, siempre con criterio y foco en la experiencia.</p></div></div>
-    <div id="formacion" tabIndex={-1} className={styles.formation}><div className={styles.formationCopy}><h3>Formación que<br/><span>amplió mi mirada.</span></h3><p>Mi recorrido parte del diseño, se fortalece con la estrategia y sigue creciendo en lo digital. Estas etapas no solo representan títulos: explican cómo fui construyendo una mirada más integral sobre experiencia, negocio y producto.</p></div><div className={styles.academicPhotos}>
-      <Photograph photo={homePhotos.industrial} sizes="(max-width: 650px) 44vw, (max-width: 900px) 40vw, 260px"><h4>Diseño Industrial</h4><p>UPTC · 2023</p></Photograph>
-      <Photograph photo={homePhotos.marketing} sizes="(max-width: 650px) 44vw, (max-width: 900px) 40vw, 260px"><h4>Alta Gerencia en Mercadotecnia</h4><p>UPTC · 2024</p></Photograph>
-    </div></div>
-    <div id="colaboracion" tabIndex={-1} className={styles.collaboration}><Photograph photo={homePhotos.collaboration} sizes="(max-width: 850px) 90vw, 45vw"/><div><p className={home.sectionLabel}>Ideas que se construyen en equipo</p><h3>Colaboración<br/><span>y aprendizaje.</span></h3><p>Disfruto los contextos donde las ideas se construyen en equipo. Muchas de las experiencias más retadoras también fueron las que más me enseñaron sobre criterio, colaboración y resolución de problemas.</p></div></div>
-  </section>}</Localized>;
+  return <Localized><section id="perfil" tabIndex={-1} className={`shell ${about.section}`} aria-labelledby="home-profile-title">
+    <HomeAboutReveal>
+      <figure className={about.portrait} data-about-reveal>
+        <Image src="/about/ivan-duran-retrato.webp" width={1000} height={1000} alt="Retrato de Iván Durán con gafas doradas, editado digitalmente a partir de su imagen." sizes="(max-width:650px) 90vw, (max-width:1000px) 40vw, 470px" loading="lazy"/>
+      </figure>
+      <div className={about.copy} data-about-reveal>
+        <p className={home.sectionLabel}>Sobre mí</p>
+        <h2 id="home-profile-title">Diseño para las personas. Con mirada de producto.</h2>
+        <div className={about.prose}>
+          <p>Soy Iván Durán, diseñador industrial y especialista en Alta Gerencia en Mercadotecnia. Mi recorrido me ha permitido conectar el diseño, las necesidades de las personas y los objetivos de negocio desde distintas perspectivas.</p>
+          <p>Hoy enfoco mi trabajo en UX/UI y diseño de producto, combinando investigación, diseño de interfaces y prototipado digital. Me entusiasma explorar nuevas tecnologías, incluida la inteligencia artificial, para transformar ideas en experiencias claras, útiles y bien pensadas.</p>
+        </div>
+        <p className={about.support}>Me mueve la curiosidad, el aprendizaje continuo y la posibilidad de crear soluciones que realmente aporten valor.</p>
+        <ul className={about.tags} aria-label="Perspectivas que conecto"><li>Diseño.</li><li>Negocio.</li><li>Tecnología.</li></ul>
+        <div className={about.education}><p>Diseño Industrial — UPTC, 2023.</p><p>Especialización en Alta Gerencia en Mercadotecnia — UPTC, 2024.</p></div>
+        <a className={about.cta} href="#experiencia">Ver mi trayectoria.<span aria-hidden="true"> ↗</span></a>
+      </div>
+    </HomeAboutReveal>
+  </section></Localized>;
 }
 
 export function HomePersonal() {
