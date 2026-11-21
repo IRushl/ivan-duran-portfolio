@@ -1,8 +1,8 @@
 .root { position: relative; isolation: isolate; }
 .stage { position: fixed; z-index: -1; inset: 0; pointer-events: none; clip-path: inset(var(--scene-clip-top,0px) 0 var(--scene-clip-bottom,0px)); }
 .scrim { position: absolute; inset: 0; background: linear-gradient(90deg,#101114a6,#10111430 65%,#10111418); }
-.hero { position: relative; }
-.hero [data-home-hero] { min-height: min(48rem,88svh); background: transparent; overflow: visible; align-items: center; }
+.hero { position: relative; isolation:isolate; }
+.hero [data-home-hero] { z-index:1; min-height: min(48rem,88svh); background: transparent; overflow: visible; align-items: center; }
 .hero [data-home-hero]::before { background: linear-gradient(90deg,#10111488,transparent 70%); }
 .hero [data-home-hero]::after { display: none; }
 .hero [data-home-hero] > div { width: min(100% - 2 * var(--gutter),75rem); display: grid; grid-template-columns: 1.1fr 1fr; column-gap: 3rem; padding-block: 2.8rem 1.8rem; }

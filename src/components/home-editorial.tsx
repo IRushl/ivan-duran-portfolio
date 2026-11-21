@@ -16,7 +16,7 @@ export function HomePerspective() {
   return <Localized><section id="perfil" tabIndex={-1} className={`shell ${about.section}`} aria-labelledby="home-profile-title">
     <HomeAboutReveal>
       <figure className={about.portrait} data-about-reveal>
-        <Image src="/about/ivan-duran-retrato.webp" width={1000} height={1000} alt="Retrato de Iván Durán con gafas doradas, editado digitalmente a partir de su imagen." sizes="(max-width:650px) 90vw, (max-width:1000px) 40vw, 470px" loading="lazy"/>
+        <Image src="/about/ivan-duran-retrato-hq.webp" width={1254} height={1254} unoptimized alt="Retrato de Iván Durán con gafas doradas, editado digitalmente a partir de su imagen." sizes="(max-width:650px) 90vw, (max-width:1000px) 40vw, 470px" loading="lazy"/>
       </figure>
       <div className={about.copy} data-about-reveal>
         <p className={home.sectionLabel}>Sobre mí</p>
@@ -28,7 +28,6 @@ export function HomePerspective() {
         <p className={about.support}>Me mueve la curiosidad, el aprendizaje continuo y la posibilidad de crear soluciones que realmente aporten valor.</p>
         <ul className={about.tags} aria-label="Perspectivas que conecto"><li>Diseño.</li><li>Negocio.</li><li>Tecnología.</li></ul>
         <div className={about.education}><p>Diseño Industrial — UPTC, 2023.</p><p>Especialización en Alta Gerencia en Mercadotecnia — UPTC, 2024.</p></div>
-        <a className={about.cta} href="#experiencia">Ver mi trayectoria.<span aria-hidden="true"> ↗</span></a>
       </div>
     </HomeAboutReveal>
   </section></Localized>;

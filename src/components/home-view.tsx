@@ -4,6 +4,7 @@ import { HomeProjects } from './home-projects';
 import { HomeNavigation } from './home-navigation';
 import { HomeTimeline } from './home-timeline';
 import { HomePerspective, HomePersonal } from './home-editorial';
+import { HomeMoments } from './home-moments';
 import { homeContact } from '@/data/home';
 import { ImmersiveHome } from './immersive-home/immersive-home';
 import { CapabilityCards } from './immersive-home/capability-cards';
@@ -17,5 +18,5 @@ export function HomeView() {
     <div className={styles.heroActions}><a className={styles.primary} href="#proyectos">Explorar proyectos</a><a className={styles.secondary} href={homeContact.cv.href} download="Ivan-Duran-CV-2026.pdf">Descargar CV <span>PDF</span></a></div>
     <div className={styles.heroBottom}><p>Diseño centrado en personas.<br/><span>Experiencias impulsadas por tecnología.</span></p><p>Investigación · Diseño de interfaces · Prototipado</p></div>
   </div></section>;
-  return <Localized>{<main id="contenido" tabIndex={-1} className={styles.home}><HomeNavigation/><ImmersiveHome hero={hero}><HomePerspective/><HomeProjects/><HomeTimeline/><CapabilityCards/><HomePersonal/><HomeContact/></ImmersiveHome></main>}</Localized>;
+  return <Localized>{<main id="contenido" tabIndex={-1} className={styles.home}><HomeNavigation/><ImmersiveHome hero={hero}><HomePerspective/><HomeProjects/><HomeTimeline/><HomeMoments/><CapabilityCards/><HomePersonal/><HomeContact/></ImmersiveHome></main>}</Localized>;
 }
