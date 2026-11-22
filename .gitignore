@@ -1,9 +1,43 @@
+# Dependencias
 node_modules/
+
+# Compilaciones y cachés
 .next/
 out/
-.vercel/
-.env*
-!.env.example
+dist/
+build/
+.turbo/
+.cache/
+coverage/
 *.tsbuildinfo
-*.log
 next-env.d.ts
+
+# Credenciales y configuración local
+.env*
+*.pem
+*.key
+*.p12
+*.pfx
+*.keystore
+
+# Metadatos locales de herramientas
+.vercel/
+.netlify/
+
+# Temporales y registros
+*.log
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+tmp/
+temp/
+work/
+
+# Sistema operativo y editor
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+*.code-workspace

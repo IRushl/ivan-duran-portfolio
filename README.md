@@ -1,15 +1,30 @@
-# Iván Durán · Portafolio
+# Iván Durán — Product Design Portfolio
 
-Portafolio de Product Design en español con cinco proyectos y contenido editable en TypeScript. Requiere Node.js 20.9 o superior.
+Portafolio profesional de Iván Camilo Durán Alba, Product Designer y UX/UI Designer. Incluye siete casos de estudio y un Home inmersivo con escena 3D, partículas, scrollytelling responsive y contenido en español e inglés.
 
-## Desarrollo local
+## Tecnología
+
+Next.js 16 (App Router), React 19, TypeScript, Three.js, CSS Modules y Tailwind CSS 4. La experiencia contempla navegación por teclado, preferencias de movimiento reducido y una alternativa visual cuando WebGL no está disponible.
+
+## Requisitos
+
+- Node.js **20.9 o superior** y npm.
+- Git para clonar y mantener el historial.
+
+No se necesitan claves de API ni archivos de entorno para la ejecución local.
+
+## Ejecución local
 
 ```bash
+git clone https://github.com/IRushl/ivan-duran-portfolio.git
+cd ivan-duran-portfolio
 npm ci
 npm run dev
 ```
 
-Abre [localhost:3000](http://localhost:3000). En PowerShell puedes usar `npm.cmd` si la política de ejecución bloquea `npm.ps1`.
+Abrir [http://localhost:3000](http://localhost:3000). `npm ci` instala las versiones fijadas en `package-lock.json`. En Windows, si PowerShell bloquea `npm.ps1`, utilizar `npm.cmd` en los mismos comandos.
+
+## Verificación y producción local
 
 ```bash
 npm run lint
@@ -18,24 +33,58 @@ npm run build
 npm start
 ```
 
-## Organización
+`npm run build` genera la compilación de producción y `npm start` la sirve localmente en el puerto 3000. Detener previamente el servidor de desarrollo si ocupa ese puerto. Estos comandos no publican el sitio.
 
-- `src/app/` contiene la portada, el layout, la página 404 y `/proyectos/[slug]`. Los casos se prerenderizan durante la compilación.
-- `src/components/` contiene la navegación, las tarjetas, las portadas, el contacto y la estructura de casos.
-- `src/data/projects.ts` define los datos introductorios de los cinco proyectos, el orden de la galería y la navegación. `src/data/case-studies.ts` guarda el contenido ampliado. Una entrada `null` muestra la introducción y las secciones pendientes.
-- `src/data/profile.ts` centraliza la disponibilidad, el correo, LinkedIn, GitHub y la URL pública. Los canales vacíos aparecen como «Por configurar». El CTA de contacto directo se activa al añadir el primer canal.
-- `src/app/globals.css` define los tokens de Tailwind, los estilos de componentes y la adaptación al movimiento reducido.
-- `public/` contiene portadas vectoriales ligeras. Para sustituir una portada, cambia `cover.src`, actualiza `cover.alt` y marca `cover.conceptual` como `false` si es material del caso.
+## Rutas
 
-## Publicación en Vercel
+| Ruta | Contenido |
+| --- | --- |
+| `/` | Home inmersivo, perfil, proyectos, experiencia, formación, capacidades, intereses y contacto |
+| `/proyectos/redeban` | Redeban — Optimización de la experiencia transaccional |
+| `/proyectos/aurora-seguros` | Aurora Seguros — Cotizador Salud Flex |
+| `/proyectos/tripflowapp` | TripFlowApp — Viajar sin estrés financiero |
+| `/proyectos/paragon` | Paragón — Comunidad y nostalgia digital |
+| `/proyectos/de-lo-largo-a-lo-corto` | De lo largo a lo corto — Interfaz de Producto |
+| `/proyectos/arho` | ARHO |
+| `/proyectos/ritual-amarte` | Ritual Amarte |
+| `/motion-lab` | Laboratorio independiente de movimiento y escena 3D |
+| `/home-preview` | Vista de comparación conservada durante las iteraciones del Home |
 
-Sube esta carpeta como repositorio de GitHub o selecciónala como directorio raíz al importar el repositorio en Vercel. Usa la configuración del framework Next.js. Define `SITE_URL` con el dominio público HTTPS en el entorno **Production** y vuelve a desplegar. También puedes definir `profile.siteUrl` como valor de respaldo.
+Los casos distinguen el alcance real, la contribución individual y el trabajo conceptual. Las visualizaciones editoriales generadas con IA se identifican como tales; las capturas originales disponibles permanecen en los casos.
 
-El dominio habilita las canónicas, el sitemap y la imagen social. Los despliegues de vista previa de Vercel y las compilaciones sin un dominio HTTPS válido declaran `noindex`. Revisa `/robots.txt`, `/sitemap.xml` y la vista previa de un caso al publicar.
+## Estructura
 
-## Contenido por completar
+```text
+src/
+  app/                      Rutas, metadatos y estilos globales
+  components/               Home, casos e interacciones reutilizables
+    immersive-home/         Composición inmersiva y palabras ambientales
+    spatial-scene/          Escena Three.js compartida
+  data/                     Proyectos, contenido, fotografías y contacto
+  i18n/                     Selector, diccionario inglés y localización ES/EN
+public/
+  about/                    Fotografías del Home
+  cv/                       CV descargable
+  home/illustrations/       Ilustraciones de capacidades e intereses
+  projects/                 Capturas, mockups y documentos de los siete casos
+assets/originals/           Retrato original conservado fuera de public/
+docs/                       Decisiones y verificaciones de las iteraciones
+```
 
-- Correo profesional, URL de LinkedIn, URL de GitHub y dominio del portafolio.
-- Redeban y De lo largo a lo corto tienen una introducción. El desarrollo de sus casos queda pendiente.
-- En los casos con contenido ampliado, abre «Ver la evidencia que falta aportar» para consultar los documentos, las comparaciones y las confirmaciones que faltan.
-- Para incorporar un entregable visual, añade el archivo a `public/` y configura `media` con `src`, `alt`, `width`, `height` y `caption`. Para publicar un prototipo compartible, rellena `prototype` con su URL HTTPS, la etiqueta y `authorized: true` tras confirmar el permiso.
+Los recursos de `public/` forman parte del repositorio y deben conservarse para que funcionen las imágenes, ampliaciones y descargas.
+
+## Mantenimiento
+
+- `src/data/projects.ts`: catálogo; cada caso dispone además de datos y componentes específicos.
+- `src/data/home.ts`, `home-photos.ts` y `personal-stories.ts`: contenido y recursos del Home.
+- `src/i18n/en.json`: traducciones inglesas; los textos originales están en español.
+- `src/components/home-story-config.ts`: distancias y movimiento de escritorio, tablet y móvil.
+- [Scrollytelling móvil](docs/HOME-MOBILE-STORY.md) y [arquitectura narrativa](docs/HOME-EDITORIAL-SCROLL.md): implementación y verificaciones.
+
+La navegación permite acceder directamente a proyectos y contacto. El control de movimiento y `prefers-reduced-motion` permiten consultar el contenido sin depender de las animaciones.
+
+## Configuración opcional
+
+`SITE_URL` se reserva para el dominio HTTPS definitivo cuando exista. No es necesaria en desarrollo. Sin un dominio configurado, el proyecto evita declarar el sitio como indexable. No deben versionarse archivos `.env` ni credenciales.
+
+Este repositorio respalda el código y los recursos del portafolio. No configura despliegues automáticos, GitHub Pages ni servicios de hosting.
