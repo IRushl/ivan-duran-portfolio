@@ -85,6 +85,8 @@ La navegación permite acceder directamente a proyectos y contacto. El control d
 
 ## Configuración opcional
 
-`SITE_URL` se reserva para el dominio HTTPS definitivo cuando exista. No es necesaria en desarrollo. Sin un dominio configurado, el proyecto evita declarar el sitio como indexable. No deben versionarse archivos `.env` ni credenciales.
+Producción: [ivan-duran-portfolio-x1a5.vercel.app](https://ivan-duran-portfolio-x1a5.vercel.app).
 
-Este repositorio respalda el código y los recursos del portafolio. No configura despliegues automáticos, GitHub Pages ni servicios de hosting.
+`src/data/profile.ts` declara la URL pública para los enlaces canónicos, Open Graph y sitemap. `SITE_URL` permite sustituirla si cambia el dominio. No se necesitan variables de entorno ni claves para ejecutar el portafolio. Los previews de Vercel permanecen sin indexación. No deben versionarse archivos `.env` ni credenciales.
+
+El proyecto existente de Vercel es `ivan-duran-portfolio-x1a5`, vinculado a este repositorio, con `main` como rama de producción. Se pueden validar ramas de revisión antes de integrarlas. No se requiere crear otro proyecto ni configurar GitHub Pages. Ver [auditoría de producción](docs/auditoria-produccion-2026-11-22.md).

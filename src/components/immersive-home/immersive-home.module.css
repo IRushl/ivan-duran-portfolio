@@ -10,6 +10,7 @@
 .hero [data-home-hero] > div > div:first-child { display: block; margin-bottom: 1.4rem; }
 .hero [data-home-hero] > div > div:first-child > span { display: block; margin-top: .4rem; font-size: .8rem; }
 .hero h1 { font-size: clamp(3rem,4.9vw,5.15rem); max-width: 15ch; }
+:global(html[lang='en']) .hero h1 { text-wrap:pretty; max-width:18ch; font-size:clamp(2.7rem,4.6vw,4.8rem); }
 .hero [data-home-hero] > div > p { font-size: 1rem; line-height: 1.75; margin-top: 1.5rem; max-width: 48ch; }
 .hero [data-home-hero] > div > div:last-child { grid-column: 1 / -1; margin-top: 2rem; }
 .orbSpace { position: absolute; pointer-events: none; top: 7%; bottom: 13%; left: 47.5%; right: 8.5%; }
@@ -21,6 +22,7 @@
 @media(max-width:650px) {
   .hero [data-home-hero] > div { display: flex; flex-direction: column; padding-top: 4.5rem; }
   .hero h1 { font-size: clamp(2.7rem,9vw,3.7rem); max-width: 17ch; margin-bottom: 15rem; }
+  :global(html[lang='en']) .hero h1 { font-size:clamp(2.4rem,8.8vw,3.5rem); }
   .hero [data-home-hero] > div > div:last-child { margin-top: 1.5rem; }
   .orbSpace { width: min(84vw,22rem); height: 18rem; top: auto; bottom: 7rem; left: 50%; right: auto; transform: translateX(-50%); }
   .hero [data-home-hero] { min-height: 0; }

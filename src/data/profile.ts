@@ -12,7 +12,7 @@ export const profile = {
     linkedin: '',
     github: '',
   },
-  siteUrl: '',
+  siteUrl: 'https://ivan-duran-portfolio-x1a5.vercel.app',
 };
 
 export const navigation = [

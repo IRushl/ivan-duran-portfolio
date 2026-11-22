@@ -19,10 +19,22 @@ export function HomeProjectGallery() {
   const autoplay = useRef<ReturnType<typeof mountGalleryAutoplay> | null>(null);
   useEffect(() => {
     if (!viewport.current || !root.current || !visual.current) return;
-    const mounted = mountProjectGallery(viewport.current, index => { activeIndex.current=index; setActive(index); autoplay.current?.reset(); }, true);
+    // Store the selection on this history entry, so Back/Forward restores its context.
+    const remember = (index: number) => {
+      const slug = homeProjects[index].project.slug;
+      history.replaceState({ ...history.state, portfolioProject: slug }, '');
+      try { sessionStorage.setItem('portfolio-last-project', slug); } catch {}
+    };
+    let saved = history.state?.portfolioProject;
+    if (!saved) { try { saved = sessionStorage.getItem('portfolio-last-project'); } catch {} }
+    const restored = homeProjects.findIndex(item => item.project.slug === saved);
+    const mounted = mountProjectGallery(viewport.current, index => { activeIndex.current=index; setActive(index); remember(index); autoplay.current?.reset(); }, true);
     controller.current = mounted;
+    if (restored >= 0) mounted.select(restored, true);
     const rotation = mountGalleryAutoplay(root.current,visual.current,null,() => mounted.select((activeIndex.current+1)%homeProjects.length),setPlayback);
     autoplay.current = rotation;
+    // Give the visitor time to resume reviewing the previously selected project.
+    if (restored >= 0) rotation.manual();
     return () => { rotation.dispose(); mounted.dispose(); autoplay.current=null; controller.current=null; };
   }, []);
   const select = (index:number, instant=false) => { autoplay.current?.manual(); controller.current?.select(index,instant); };
