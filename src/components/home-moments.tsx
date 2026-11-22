@@ -11,12 +11,12 @@ const moments=[
 ];
 
 export function HomeMoments() {
-  return <ScrollNarrative id="momentos" labelledBy="home-moments-title" className={`shell ${styles.section}`}><Localized>
+  return <ScrollNarrative id="momentos" kind="photo" labelledBy="home-moments-title" className={`shell ${styles.section}`}><Localized>
     <div className={styles.frame} data-story-frame>
-      <header className={styles.intro}><h2 id="home-moments-title">Momentos que construyeron mi camino.</h2><span className={styles.counter} aria-hidden="true"><span data-story-counter>01</span><span> / 03</span></span></header>
-      <div className={styles.grid}>{moments.map(({photo,title,label,caption,alt},index)=><figure key={photo.src} className={styles.figure} data-story-panel>
+      <header className={styles.intro}><h2 id="home-moments-title">Momentos que construyeron mi camino.</h2></header>
+      <div className={styles.grid}>{moments.map(({photo,title,label,caption,alt})=><figure key={photo.src} className={styles.figure} data-story-panel>
         <div className={styles.image}><Image src={photo.src} width={photo.width} height={photo.height} alt={alt} sizes="(max-width:650px) 90vw, (max-width:999px) 44vw, 520px" loading="lazy"/></div>
-        <figcaption><p className={styles.label}>{String(index+1).padStart(2,'0')} / {label}</p><h3>{title}</h3><p>{caption}</p></figcaption>
+        <figcaption data-story-window><div data-story-copy><p className={styles.label}>{label}</p><h3>{title}</h3><p>{caption}</p></div></figcaption>
       </figure>)}</div>
     </div>
   </Localized></ScrollNarrative>;
