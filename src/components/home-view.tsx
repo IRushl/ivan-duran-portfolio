@@ -5,7 +5,7 @@ import { HomeNavigation } from './home-navigation';
 import { HomeTimeline } from './home-timeline';
 import { HomePerspective, HomePersonal } from './home-editorial';
 import { HomeMoments } from './home-moments';
-import { HomeProcessInterlude } from './home-process';
+import { StoryTransition } from './home-story-transition';
 import { homeContact } from '@/data/home';
 import { ImmersiveHome } from './immersive-home/immersive-home';
 import { CapabilityCards } from './immersive-home/capability-cards';
@@ -19,5 +19,5 @@ export function HomeView() {
     <div className={styles.heroActions}><a className={styles.primary} href="#proyectos">Explorar proyectos</a><a className={styles.secondary} href={homeContact.cv.href} download="Ivan-Duran-CV-2026.pdf">Descargar CV <span>PDF</span></a></div>
     <div className={styles.heroBottom}><p>Diseño centrado en personas.<br/><span>Experiencias impulsadas por tecnología.</span></p><p>Investigación · Diseño de interfaces · Prototipado</p></div>
   </div></section>;
-  return <Localized>{<main id="contenido" tabIndex={-1} className={styles.home}><HomeNavigation/><ImmersiveHome hero={hero}><HomePerspective/><HomeProjects/><HomeTimeline/><HomeMoments/><HomeProcessInterlude/><CapabilityCards/><HomePersonal/><HomeContact/></ImmersiveHome></main>}</Localized>;
+  return <Localized>{<main id="contenido" tabIndex={-1} className={styles.home}><HomeNavigation/><ImmersiveHome hero={hero}><StoryTransition id="historia-perspectiva" phrases={['Detrás de cada interfaz…','Hay una forma de mirar el mundo.','La mía comenzó mucho antes de diseñar pantallas.']}/><HomePerspective/><StoryTransition id="historia-proyectos" align="left" phrases={['Entender es el comienzo.','Diseñar es convertir esa comprensión en decisiones.']}/><HomeProjects/><StoryTransition id="historia-experiencia" align="right" phrases={['Cada proyecto plantea un desafío diferente.','La experiencia se construye enfrentándolos.']}/><HomeTimeline/><HomeMoments/><StoryTransition id="historia-capacidades" phrases={['Lo aprendido se transforma en una forma de pensar.','Y esa forma de pensar define cómo diseño.']}/><CapabilityCards/><StoryTransition id="historia-curiosidad" align="left" phrases={['Pero la curiosidad no termina en el trabajo.','También vive en todo lo que me apasiona.']}/><HomePersonal/><StoryTransition id="historia-conversacion" align="right" phrases={['Las ideas crecen cuando se comparten.','Quizá la próxima comience con una conversación.']}/><HomeContact/></ImmersiveHome></main>}</Localized>;
 }

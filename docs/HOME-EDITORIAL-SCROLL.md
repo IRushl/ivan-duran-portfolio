@@ -1,31 +1,39 @@
-# Home: edición narrativa y scrollytelling breve
+# Home: recorrido narrativo continuo
 
-## Cambios
+Punto de restauración previo: `3e6d195`. Recupera la versión aprobada antes de estas transiciones.
 
-- Hero: dieciséis términos en siete posiciones reservadas. Opacidades ambientales de .22–.31, tres trayectorias suaves y ciclos de duraciones distintas (37–67 s) para reducir la repetición perceptible. Las zonas del texto, CTA y orbe se respetan; no hay eventos de puntero en las palabras. En tablet disminuye la densidad y en móvil se oculta la capa. ES/EN, pausa por visibilidad y movimiento reducido se mantienen.
-- Encabezado de proyectos: «Proyectos · Distintos contextos» / «Projects · Different contexts». Solo se modifica ese microcopy. Los siete casos y el controlador del carrusel no cambian.
-- Momentos: el grado en Diseño Industrial protagoniza la columna izquierda; especialización y recuerdo universitario tienen escalas y composiciones distintas a la derecha. En móvil siguen una secuencia vertical. Mismos archivos, pies y contextos, sin filtros ni recortes de personas; sizes de Next/Image ajustados al nuevo layout.
-- Historias: `src/data/personal-stories.ts` contiene íntegramente los subtítulos y ocho párrafos suministrados por Iván. Se mantienen las cuatro imágenes y títulos existentes. Clic/Enter abre o fija el desplegable, permitiendo leerlo después de retirar el cursor; otro clic lo cierra. Hover y toque siguen disponibles. La versión inglesa conserva matices como los aproximadamente 18 años de taekwondo y la oportunidad cercana a la Selección Colombia, sin afirmar pertenencia al equipo.
+## Composición
 
-## Interludio entre Momentos y Capacidades
+Se retira por completo el antiguo interludio «Mi forma de trabajar» y sus tres archivos `home-process*`. El recorrido pasa a ser Hero → transición de tres frases → Sobre mí → transición → proyectos → transición → experiencia → historia fotográfica → transición → capacidades → transición → intereses → transición → contacto.
 
-`home-process.tsx`, `home-process-motion.ts` y su CSS presentan las tres etapas aprobadas. Se usa CSS sticky y scroll nativo: no se instala GSAP porque la arquitectura existente resuelve este recorrido sin nuevas dependencias. La fijación solo opera desde 1000 px de ancho y 700 px de alto, y abarca 85 svh de desplazamiento. El usuario puede avanzar y retroceder o saltar a otros bloques con la navegación existente.
+Las seis transiciones utilizan las frases suministradas por Iván, con alternancia de alineación central, izquierda y derecha. No duplican los títulos de las secciones. La narrativa fotográfica contiene las tres historias y fotografías reales aprobadas, con indicador 01/03, 02/03, 03/03. Las imágenes conservan su proporción y rostros mediante object-fit: contain.
 
-El contador cambia 01/03 → 02/03 → 03/03 según el progreso real. El mensaje activo siempre tiene opacidad base 1: una entrada de 360 ms y 8 px termina por sí sola y evita dejar texto invisible cuando el usuario se detiene entre fases. Los diagramas tienen un desplazamiento vertical ligado al scroll; una capa ambiental independiente se desplaza con menor intensidad y sentido contrario. Son esquemas conceptuales en SVG, no capturas de trabajos ni funcionalidades de un producto. No se añade Canvas ni se modifican materiales, geometría o movimiento de la escena existente.
+## Arquitectura
 
-Móvil, tablet, movimiento reducido y pausa manual reciben los tres artículos en secuencia vertical, sin fijación. Sin JavaScript también se muestran los tres contenidos. La estructura semántica conserva los tres mensajes para lectura asistida y no anuncia el contador continuamente. No se interceptan rueda, teclado ni gestos, ni se ejecutan comandos de scroll. Un solo RAF se solicita cuando hay eventos y la sección está visible; no hay un bucle automático. Se limpian animaciones, observadores y listeners.
+- `home-story-transition.tsx` y `home-story.module.css`: presentación tipográfica reutilizable, renderizada en servidor.
+- `home-scroll-narrative.tsx`: límite cliente que monta y desmonta el controlador y reacciona al idioma.
+- `home-story-motion.ts`: cálculo genérico para dos o tres etapas, scroll nativo e intervalos sticky independientes.
+- `home-moments.tsx` / CSS: narrativa fotográfica de tres momentos, imagen izquierda y texto derecha en escritorio; vertical en móvil.
+- `home-view.tsx`: composición del recorrido.
+- `src/i18n/en.json`: traducciones de las frases y relatos nuevos.
 
-## Archivos principales
+No se instala GSAP: no forma parte de las dependencias existentes y la arquitectura actual permite resolver la sincronización con scroll real mediante CSS sticky y un RAF solicitado solo al recibir eventos. No se añade Canvas, motor de partículas ni objeto 3D. El Hero, los controladores del carrusel, las cuatro capacidades, las historias personales, contacto, CV y los casos se mantienen.
 
-- `immersive-home/ambient-kinetic-typography.*`: vocabulario, luminosidad y trayectorias.
-- `home-project-gallery.tsx`: microcopy.
-- `home-moments.tsx` / CSS: composición asimétrica y tamaños responsive.
-- `personal-stories.ts`, `interest-cards.tsx`, `refinements.module.css`: historias, subtítulos, lectura y despliegue.
-- `home-process*`, `home-view.tsx`: nuevo puente narrativo y ubicación.
-- `src/i18n/en.json`: traducciones nuevas.
+## Duración y accesibilidad
 
-## Validación
+En escritorio desde 1000 × 700, cada transición ocupa aproximadamente una pantalla: marco de 76svh menos cabecera y 30svh de recorrido fijado. La fotografía reserva un recorrido de 105svh para sus tres etapas. Los mensajes cambian bidireccionalmente por progreso real; una entrada de 420 ms termina por sí sola para que el texto permanezca visible aunque el usuario se detenga en el umbral. El desplazamiento tipográfico máximo es 15 px y el fotográfico aproximadamente 7 px. No se interceptan rueda, teclado ni gestos.
 
-Se ejecutaron ESLint, compilación webpack y TypeScript; pruebas de tres fases reversibles, límites, pausa fuera de pantalla, pestaña oculta, limpieza de recursos, preferencia de movimiento y modo móvil; pruebas existentes de orbe, cámara, partículas, carrusel, autoplay, bucle y traducción. Se revisan también las respuestas locales ES/EN y el resultado en navegador en escritorio, tablet y móvil.
+En móvil, tablet, movimiento reducido, pausa manual y sin JavaScript se presentan todos los mensajes y fotografías en orden, sin fijación. Cada transición dispone de un encabezado accesible que reúne las frases, evitando lecturas duplicadas de las versiones visuales. Las fotografías y relatos conservan su semántica. Los anchors existentes permiten omitir introducciones y llegar directamente a proyectos, perfil, capacidades y contacto.
 
-La evaluación de rendimiento se limita a arquitectura, suspensión, ausencia de bucles añadidos, comportamiento observado y consola. No se ejecuta Lighthouse ni se aportan puntuaciones o Core Web Vitals de campo.
+El controlador pausa solicitudes fuera de pantalla o en pestañas inactivas y limpia observadores, listeners, animaciones y RAF. La comprobación de rendimiento se limita a arquitectura, consola y comportamiento observado; no representa una medición de FPS ni de Core Web Vitals.
+
+## Comprobaciones realizadas
+
+- Build de producción webpack y TypeScript: correcto; ESLint: correcto.
+- Pruebas del controlador: etapas reversibles, límites, mensaje visible al detenerse, una solicitud RAF por evento, suspensión y limpieza; fallback móvil, prefers-reduced-motion y pausa manual.
+- Pruebas existentes del carrusel, autoplay, escena 3D, tipografía ambiental y traducciones: correctas. El aviso de deprecación de Three CJS procede del harness de pruebas, no del bundle de la aplicación.
+- Home y siete casos: respuestas 200 y contenido localizado en ES/EN.
+- Navegador: primera transición 01→02→03→02; fotografías 01→02→03→02; revisión visual de los seis puentes y etapas finales. Fotos cargadas con contain y textos completos. Selección del carrusel mediante clic y flecha derecha conserva foco y activa Aurora Seguros.
+- Navegación del navbar a proyectos, perfil, competencias y contacto operativa. El contacto puede quedar más abajo que el margen del header al alcanzar el final del documento; no se añade relleno artificial para forzar su alineación.
+- Escritorio 1440×1000, tablet 820×1180, móvil 390×844 y ancho mínimo 320: sin desbordamiento horizontal. En tablet/móvil todos los relatos quedan en flujo normal. Pausa manual comprobada en navegador: siete historias con modo estático y tres fotos visibles. La preferencia del sistema también está cubierta por el harness del controlador.
+- La comparación de Git confirma que Hero, escena, partículas, carrusel, capacidades, historias personales, navegación, contacto, timeline, casos y recursos públicos no se han modificado.
