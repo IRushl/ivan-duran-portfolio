@@ -29,3 +29,19 @@
 @media(max-width:1000px) { .lane:nth-child(5),.lane:nth-child(6),.lane:nth-child(7) { display:none; } .lane:nth-child(3) { left:59%; top:81%; } }
 @media(max-width:650px),print { .layer { display:none; } }
 @media(prefers-reduced-motion:reduce) { .layer :is(.drift,.word) { animation:none; } .word + .word { opacity:0; } }
+/* Keep words in peripheral lanes; the measured reading-zone exclusion is authoritative. */
+.lane:first-child { left:64%; top:7%; }
+.lane:nth-child(2) { left:91%; top:24%; }
+.lane:nth-child(3) { left:65%; top:78%; }
+.lane:nth-child(4) { left:91%; top:79%; }
+.lane:nth-child(5) { left:82%; top:10%; }
+.lane:nth-child(6) { left:60%; top:91%; }
+.lane:nth-child(7) { left:81%; top:91%; }
+@media(max-width:650px) {
+  .layer { display:block; }
+  .lane { display:none; }
+  .lane:first-child,.lane:nth-child(2) { display:block; font-size:.68rem; opacity:.18; }
+  .lane:first-child { left:84%; top:36%; }
+  .lane:nth-child(2) { left:17%; top:47%; }
+}
+@media print { .layer { display:none; } }

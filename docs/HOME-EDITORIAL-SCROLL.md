@@ -44,3 +44,7 @@ La escena 3D y sus partículas no se duplican. El controlador cancela su RAF al 
 - Tablet 820×1180 y móvil 390×844: sin desbordamientos, secuencia normal, textos sin transformaciones ni máscara y frases centradas.
 - Dot de TripFlowApp comprobado: activa el proyecto correspondiente. Accesos directos a proyectos y contacto operativos. Cambio ES/EN y pausa manual comprobados; prefers-reduced-motion cubierto además por el test del controlador.
 - No se ejecutaron mediciones nuevas de FPS, Lighthouse ni Core Web Vitals; no se atribuyen puntuaciones o mejoras cuantificadas de rendimiento.
+
+## Actualización posterior: coreografía móvil
+
+La corrección documentada en HOME-MOBILE-STORY.md sustituye la anterior desactivación por breakpoint: móvil y tablet ahora tienen secuencias sticky con distancias específicas (120/160svh por frase/historia en teléfono, 130/170svh en tablet). La presentación secuencial estática queda reservada a movimiento reducido, pausa manual, ausencia de JavaScript o texto que exceda el espacio legible. Los parámetros de escritorio permanecen sin cambios.
