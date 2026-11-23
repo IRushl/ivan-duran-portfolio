@@ -1,8 +1,8 @@
+import { CaseNext } from './case-next';
 import { Localized } from '@/i18n/server-localized';
 import Link from 'next/link';
 import { EvidenceLabel } from './evidence-label';
-import { ArrowDown, ArrowRight, ArrowUpRight } from 'lucide-react';
-import type { Project } from '@/data/projects';
+import { ArrowDown, ArrowUpRight } from 'lucide-react';
 import { tripflowImages, tripflowTargets } from '@/data/tripflow';
 import { CaseReveal } from './case-reveal';
 import { CursorParallax } from './cursor-parallax';
@@ -10,7 +10,7 @@ import { TripflowVisual } from './tripflow-visual';
 import { TripflowExplorer } from './tripflow-explorer';
 import styles from './tripflow-case.module.css';
 
-export function TripflowCase({ nextProject }: { nextProject: Project }) {
+export function TripflowCase() {
   return <Localized>{<main id="contenido" data-cursor-parallax="tripflow" tabIndex={-1} className={`shell ${styles.case}`}><CursorParallax rootSelector={'[data-cursor-parallax="tripflow"]'} /><CaseReveal>
     <header className={styles.hero}>
       <nav aria-label="Ruta de navegación"><ol className="case-breadcrumb"><li><Link className="back-link" href="/#proyectos">Volver a proyectos</Link></li><li aria-current="page"><span aria-hidden="true">/</span> TripFlowApp</li></ol></nav>
@@ -47,6 +47,6 @@ export function TripflowCase({ nextProject }: { nextProject: Project }) {
     <section className={styles.section} aria-labelledby="tripflow-reflexion"><p className="eyebrow">Reflexión / Lo que me llevo</p><h2 id="tripflow-reflexion" data-motion="heading">Diseñar menos interrupciones,<br /><span>no más funcionalidades.</span></h2><p className={styles.reflectionLead}>Diseñar TripFlow no consistía simplemente en agregar funcionalidades, sino en reducir la atención que la gestión financiera exige durante un viaje.</p><div className={styles.learnings}><div><h3>Comparar con criterio</h3><p>Revisar el benchmark ayudó a concentrar la exploración en tareas realmente comparables.</p></div><div><h3>Priorizar el recorrido</h3><p>Planificar, registrar y consultar dan continuidad a la propuesta; añadir opciones no garantiza una experiencia más simple.</p></div><div><h3>Conectar eficiencia y confianza</h3><p>Un registro breve debe convivir con información financiera comprensible. La coherencia de los indicadores, el contraste de los avisos y el impacto proyectado aún deben validarse.</p></div></div>
       <div className={styles.resources}><h3>Recursos y alcance</h3><p>Explora el diseño y el prototipo del recorrido.</p><div className="hero-actions"><a className="button button-primary" href="https://filled-row-01691768.figma.site" target="_blank" rel="noopener noreferrer" aria-label="Abrir prototipo (abre en una pestaña nueva)">Abrir prototipo <ArrowUpRight size={16} aria-hidden="true" /></a><a className="button button-quiet" href="https://www.figma.com/design/kk0av7CRVeOllZLiPXsf30/Tripflow-App?node-id=0-1&t=7yIgYepOvc7Fglhi-1" target="_blank" rel="noopener noreferrer" aria-label="Ver diseño en Figma (abre en una pestaña nueva)">Ver diseño en Figma <ArrowUpRight size={16} aria-hidden="true" /></a></div></div>
     </section>
-    <Link className="case-next" href={`/proyectos/${nextProject.slug}`}><div><span className="eyebrow">Siguiente proyecto</span><strong>{nextProject.name}</strong></div><ArrowRight size={26} aria-hidden="true" /></Link>
+    <CaseNext slug="tripflowapp" />
   </CaseReveal></main>}</Localized>;
 }

@@ -19,7 +19,7 @@ const project = (slug: string) => {
   return match;
 };
 
-export const homeProjects = [
+const homeProjectDetails = [
   {
     project: project('redeban'), tone: 'redeban',
     headline: 'Una transacción. Dos plataformas. Una experiencia conectada.',
@@ -91,6 +91,13 @@ export const homeProjects = [
     caption: 'Visualización conceptual',
   },
 ] as const;
+
+/** Presentational details follow the canonical project registry, never a second order. */
+export const homeProjects = projects.map(project => {
+  const details=homeProjectDetails.find(item=>item.project.slug===project.slug);
+  if(!details)throw new Error('Missing Home presentation: '+project.slug);
+  return details;
+});
 
 export const homeExperience = [
   { role: 'UX/UI Designer', company: 'Imaginamos S.A.S.', period: 'Ene — May 2026', detail: 'Interfaces web, arquitectura de información, prototipos responsive y colaboración con producto, marketing y desarrollo.' },

@@ -31,14 +31,14 @@ export const projects = [
     cover: { src: '/proyectos/aurora.svg', alt: 'Composición conceptual en azul con anillos concéntricos y una cruz de salud.', conceptual: true },
   },
   {
-    slug: 'tripflowapp',
-    name: 'TripFlowApp',
-    title: 'Viajar sin estrés financiero',
-    category: 'UX/UI Design / Traveltech',
+    slug: 'arho',
+    name: 'ARHO',
+    title: 'Un universo ecuestre. Una experiencia digital.',
+    category: 'UX/UI Design / Responsive Web',
     type: null,
-    description: 'Diseño de una experiencia para ayudar a los viajeros a gestionar sus gastos y mantener el control financiero durante sus viajes.',
-    focus: 'Investigación UX, diseño de interacciones, visualización de información y experiencia móvil.',
-    cover: { src: '/proyectos/tripflow.svg', alt: 'Composición conceptual en azul petróleo con una ruta trazada entre puntos.', conceptual: true },
+    description: 'Diseño de una experiencia responsive para conectar servicios ecuestres, catálogo de caballos, tienda y espacios en una propuesta digital coherente.',
+    focus: 'Arquitectura de información, jerarquía visual, interfaces desktop y móvil y consistencia de componentes.',
+    cover: { src: '/projects/arho/mockups-approved/01-arho-catalogo-laptop-movil.png', alt: 'Catálogo de caballos ARHO presentado en laptop y smartphone.', conceptual: true },
   },
   {
     slug: 'paragon',
@@ -51,6 +51,16 @@ export const projects = [
     cover: { src: '/proyectos/paragon.svg', alt: 'Composición conceptual violeta con páginas desplegadas y líneas de texto abstractas.', conceptual: true },
   },
   {
+    slug: 'tripflowapp',
+    name: 'TripFlowApp',
+    title: 'Viajar sin estrés financiero',
+    category: 'UX/UI Design / Traveltech',
+    type: null,
+    description: 'Diseño de una experiencia para ayudar a los viajeros a gestionar sus gastos y mantener el control financiero durante sus viajes.',
+    focus: 'Investigación UX, diseño de interacciones, visualización de información y experiencia móvil.',
+    cover: { src: '/proyectos/tripflow.svg', alt: 'Composición conceptual en azul petróleo con una ruta trazada entre puntos.', conceptual: true },
+  },
+  {
     slug: 'de-lo-largo-a-lo-corto',
     name: 'De lo largo a lo corto',
     title: 'El poder de escalar contenido',
@@ -59,16 +69,6 @@ export const projects = [
     description: 'Diseño de una estrategia de reutilización de contenido mediante inteligencia artificial para transformar formatos extensos en piezas digitales adaptadas a diferentes canales.',
     focus: 'Growth Marketing, automatización, distribución de contenido y optimización de conversiones.',
     cover: { src: '/proyectos/de-lo-largo-a-lo-corto.svg', alt: 'Una banda larga se ramifica en tres piezas de distintas longitudes.', conceptual: true },
-  },
-  {
-    slug: 'arho',
-    name: 'ARHO',
-    title: 'Un universo ecuestre. Una experiencia digital.',
-    category: 'UX/UI Design / Responsive Web',
-    type: null,
-    description: 'Diseño de una experiencia responsive para conectar servicios ecuestres, catálogo de caballos, tienda y espacios en una propuesta digital coherente.',
-    focus: 'Arquitectura de información, jerarquía visual, interfaces desktop y móvil y consistencia de componentes.',
-    cover: { src: '/projects/arho/mockups-approved/01-arho-catalogo-laptop-movil.png', alt: 'Catálogo de caballos ARHO presentado en laptop y smartphone.', conceptual: true },
   },
   {
     slug: 'ritual-amarte',
@@ -83,3 +83,9 @@ export const projects = [
 ] as const satisfies readonly Project[];
 
 export type ProjectSlug = (typeof projects)[number]['slug'];
+
+/** The registry order drives both the Home carousel and the linear case-study journey. */
+export function getNextProject(slug: ProjectSlug): Project | undefined {
+  const index=projects.findIndex(project=>project.slug===slug);
+  return index<0 ? undefined : projects[index+1];
+}

@@ -40,13 +40,10 @@ export default async function CasePage({ params }: CasePageProps) {
   const project = projects.find((entry) => entry.slug === slug);
   if (!project) notFound();
 
-  const index = projects.indexOf(project);
-  const nextProject = projects[(index + 1) % projects.length];
-
-  if (project.slug === 'redeban') return <RedebanCase project={project} nextProject={nextProject} />;
-  if (project.slug === 'aurora-seguros') return <AuroraCase nextProject={nextProject} />;
-  if (project.slug === 'tripflowapp') return <TripflowCase nextProject={nextProject} />;
-  if (project.slug === 'paragon') return <ParagonCase nextProject={nextProject} />;
+  if (project.slug === 'redeban') return <RedebanCase project={project} />;
+  if (project.slug === 'aurora-seguros') return <AuroraCase />;
+  if (project.slug === 'tripflowapp') return <TripflowCase />;
+  if (project.slug === 'paragon') return <ParagonCase />;
   if (project.slug === 'de-lo-largo-a-lo-corto') return <IdpCase />;
   if (project.slug === 'arho') return <ArhoCase />;
   if (project.slug === 'ritual-amarte') return <RitualCase />;

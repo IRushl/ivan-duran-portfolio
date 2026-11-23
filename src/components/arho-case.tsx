@@ -1,7 +1,8 @@
+import { CaseNext } from './case-next';
 import { Localized } from '@/i18n/server-localized';
 import Link from 'next/link';
 import { EvidenceLabel } from './evidence-label';
-import { ArrowDown, ArrowRight } from 'lucide-react';
+import { ArrowDown } from 'lucide-react';
 import { arhoApprovedMockups, arhoScreens } from '@/data/arho';
 import { ArhoOriginalScene } from './arho-original-scene';
 import { ArhoExplorer } from './arho-explorer';
@@ -34,6 +35,6 @@ export function ArhoCase() {
     <div className={styles.experiences}>{chapters.map(chapter=><section key={chapter.id} id={chapter.id} className={styles.experience} aria-labelledby={`arho-${chapter.id}`}><div className={styles.experienceIntro} data-motion="copy"><p className="eyebrow">{chapter.number} / {chapter.label}</p><h2 id={`arho-${chapter.id}`}>{chapter.title}{' '}<span>{chapter.emphasis}</span></h2><div className={styles.prose}><p>{chapter.text}</p><p className={styles.decision}><strong>Criterio de diseño</strong>{chapter.decision}</p></div></div><div data-motion="image">{chapter.image === 'catalog' || chapter.image === 'shop' ? <ArhoVisual image={arhoApprovedMockups[chapter.image]} title={`ARHO / ${chapter.label} · Desktop y móvil`} /> : <ArhoOriginalScene screen={arhoScreens.find(screen => screen.id === chapter.image)!} />}</div></section>)}</div>
     <section id="responsive" className={styles.section} aria-labelledby="arho-responsive"><p className="eyebrow">03 / Experiencia responsive</p><div className={styles.sectionIntro}><h2 id="arho-responsive" data-motion="heading">Una experiencia,<br /><span>dos formas de recorrerla.</span></h2><p className={styles.prose}>Las retículas de escritorio pasan a una lectura vertical en móvil. El menú se condensa, las tarjetas se reorganizan y las fichas conservan imágenes, información y acciones en una secuencia más estrecha.</p></div><ArhoExplorer /><p className={styles.scopeNote}>El caso presenta el diseño entregado; no confirma la publicación del sitio ni resultados de negocio.</p></section>
     <section id="reflexion" className={`${styles.section} ${styles.reflection}`} aria-labelledby="arho-reflexion"><p className="eyebrow">04 / Entrega y reflexión</p><h2 id="arho-reflexion" data-motion="heading">La coherencia también<br /><span>es una forma de orientar.</span></h2><p className={styles.reflectionLead}>ARHO demuestra mi capacidad para organizar un ecosistema diverso, priorizar bajo una restricción de tiempo y llevar una propuesta responsive hasta su entrega comercial.</p><div className={styles.reflectionGrid}><div><h3>Diseño entregado.</h3><p>Completé y entregué el trabajo remunerado en una semana, conectando las páginas mediante una arquitectura y un lenguaje visual compartidos.</p></div><div><EvidenceLabel kind="observed" label="Evidencia cualitativa · feedback del cliente" /><h3>Recepción del cliente.</h3><p>Los propietarios expresaron una valoración muy positiva de la propuesta. Esta recepción describe la entrega; no equivale a una medición de usabilidad.</p></div><div><h3>Impacto por medir.</h3><p>La entrega no acredita publicación ni resultados de negocio. El siguiente paso sería evaluar navegación, comprensión de las fichas y uso de las acciones principales.</p></div></div></section>
-    <Link className="case-next" href="/#proyectos"><div><span className="eyebrow">Seguir explorando</span><strong>Volver a proyectos</strong></div><ArrowRight size={26} aria-hidden="true" /></Link>
+    <CaseNext slug="arho" />
   </CaseReveal></main>}</Localized>;
 }

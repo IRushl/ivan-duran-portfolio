@@ -1,7 +1,8 @@
+import { CaseNext } from './case-next';
 import { Localized } from '@/i18n/server-localized';
 import Link from 'next/link';
 import { EvidenceLabel } from './evidence-label';
-import { ArrowDown, ArrowRight } from 'lucide-react';
+import { ArrowDown } from 'lucide-react';
 import { idpImages } from '@/data/idp';
 import { CaseReveal } from './case-reveal';
 import { CursorParallax } from './cursor-parallax';
@@ -41,6 +42,6 @@ export function IdpCase() {
 
     <section className={styles.closing} aria-labelledby="idp-cierre"><div data-motion="image"><IdpVisual parallax image={idpImages.closing} title="IDP · Producción, distribución y medición" caption="Visualización conceptual generada con IA del ecosistema IDP." sizes="(max-width: 1050px) 90vw, 1040px" /></div><p className="eyebrow">Reflexión final</p><h2 id="idp-cierre" data-motion="heading">No diseñé solamente piezas de contenido.<br /><span>Diseñé un sistema para multiplicar sus oportunidades.</span></h2><p className={styles.closingText}>La escalabilidad depende de una estructura que pueda repetirse sin perder coherencia. Mi aporte fue conectar las transformaciones y su propósito; comprobar su contribución al crecimiento exige una medición que siga el recorrido completo.</p></section>
 
-    <Link className="case-next" href="/#proyectos"><div><span className="eyebrow">Seguir explorando</span><strong>Volver a proyectos</strong></div><ArrowRight size={26} aria-hidden="true" /></Link>
+    <CaseNext slug="de-lo-largo-a-lo-corto" />
   </CaseReveal></main>}</Localized>;
 }

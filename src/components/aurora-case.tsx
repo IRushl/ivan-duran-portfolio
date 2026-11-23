@@ -1,8 +1,8 @@
+import { CaseNext } from './case-next';
 import { Localized } from '@/i18n/server-localized';
 import Link from 'next/link';
 import { EvidenceLabel } from './evidence-label';
-import { ArrowDown, ArrowRight, ArrowUpRight } from 'lucide-react';
-import type { Project } from '@/data/projects';
+import { ArrowDown, ArrowUpRight } from 'lucide-react';
 import { auroraStart, auroraPeople, auroraPlans, auroraMobilePlans, auroraShot } from '@/data/aurora';
 import { CaseReveal } from './case-reveal';
 import { CursorParallax } from './cursor-parallax';
@@ -21,7 +21,7 @@ const presentation = {
   summaryMobile: auroraShot('D01', 'Mobile', 'closure', 780, 2824, 'Resumen móvil con aviso de elección demostrativa, plan Plus y personas incluidas.'),
 };
 
-export function AuroraCase({ nextProject }: { nextProject: Project }) {
+export function AuroraCase() {
   return <Localized>{<main id="contenido" data-cursor-parallax="aurora" tabIndex={-1} className={styles.case}><CursorParallax rootSelector={'[data-cursor-parallax="aurora"]'} /><CaseReveal>
     <header className={styles.hero}>
       <nav aria-label="Ruta de navegación"><ol className="case-breadcrumb"><li><Link className="back-link" href="/#proyectos">Volver a proyectos</Link></li><li aria-current="page"><span aria-hidden="true">/</span> Aurora Seguros</li></ol></nav>
@@ -73,6 +73,6 @@ export function AuroraCase({ nextProject }: { nextProject: Project }) {
         </div>
       </div>
     </section>
-    <Link className="case-next" href={`/proyectos/${nextProject.slug}`}><div><span className="eyebrow">Siguiente proyecto</span><strong>{nextProject.name}</strong></div><ArrowRight size={26} aria-hidden="true" /></Link>
+    <CaseNext slug="aurora-seguros" />
   </CaseReveal></main>}</Localized>;
 }

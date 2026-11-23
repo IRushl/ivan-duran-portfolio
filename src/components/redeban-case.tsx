@@ -1,8 +1,9 @@
+import { CaseNext } from './case-next';
 import { Localized } from '@/i18n/server-localized';
 import type { ReactNode } from 'react';
 import Link from 'next/link';
 import { EvidenceLabel } from './evidence-label';
-import { ArrowDown, ArrowRight, ArrowUpRight } from 'lucide-react';
+import { ArrowDown, ArrowUpRight } from 'lucide-react';
 import type { Project } from '@/data/projects';
 import { CaseReveal } from './case-reveal';
 import { CursorParallax } from './cursor-parallax';
@@ -119,7 +120,7 @@ function Act({ index, children }: { index: 0 | 1 | 2 | 3 | 4; children: ReactNod
   )}</Localized>;
 }
 
-export function RedebanCase({ project, nextProject }: { project: Project; nextProject: Project }) {
+export function RedebanCase({ project }: { project: Project }) {
   return <Localized>{(
     <main id="contenido" data-cursor-parallax="redeban" tabIndex={-1} className={`shell ${styles.page}`}>
       <CursorParallax rootSelector={'[data-cursor-parallax="redeban"]'} /><CaseReveal>
@@ -334,10 +335,7 @@ export function RedebanCase({ project, nextProject }: { project: Project; nextPr
         </Act>
       </CaseReveal>
 
-      <Link className="case-next" href={`/proyectos/${nextProject.slug}`}>
-        <div><span className="eyebrow">Siguiente proyecto</span><strong>{nextProject.name}</strong></div>
-        <ArrowRight size={26} aria-hidden="true" />
-      </Link>
+      <CaseNext slug="redeban" />
     </main>
   )}</Localized>;
 }
